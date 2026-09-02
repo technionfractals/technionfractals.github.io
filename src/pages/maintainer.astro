@@ -1,0 +1,500 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Maintainer guide"
+  description="A practical workflow for maintaining the Technion Fractals Seminar website."
+>
+  <header class="page-header maintainer-header">
+    <p class="eyebrow">Website operations</p>
+    <h1>Maintainer guide</h1>
+    <p>A practical workflow for reviewing submissions, publishing talks, and keeping the website reliable.</p>
+    <div class="guide-actions">
+      <a class="button" href="https://app.pagescms.org/" target="_blank" rel="noopener noreferrer">
+        Open Pages CMS ↗
+      </a>
+      <a
+        class="secondary-action"
+        href="https://github.com/technionfractals/technionfractals.github.io/actions"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View deployments ↗
+      </a>
+    </div>
+  </header>
+
+  <div class="guide-content">
+    <section class="guide-section" aria-labelledby="workflow-heading">
+      <div class="section-heading">
+        <p class="section-number">01</p>
+        <div>
+          <h2 id="workflow-heading">From submission to publication</h2>
+          <p>The normal path requires no local code changes.</p>
+        </div>
+      </div>
+
+      <ol class="workflow">
+        <li>
+          <strong>Collect</strong>
+          <span>Review the speaker's Google Form response.</span>
+        </li>
+        <li>
+          <strong>Confirm</strong>
+          <span>Resolve missing dates, venue details, links, or unclear wording.</span>
+        </li>
+        <li>
+          <strong>Draft</strong>
+          <span>Create the talk in Pages CMS and keep its status as draft.</span>
+        </li>
+        <li>
+          <strong>Review</strong>
+          <span>Check the rendered abstract, mathematical notation, and public materials.</span>
+        </li>
+        <li>
+          <strong>Publish</strong>
+          <span>Set the status to published and save the CMS entry.</span>
+        </li>
+        <li>
+          <strong>Verify</strong>
+          <span>Wait for GitHub Actions, then inspect the public page.</span>
+        </li>
+      </ol>
+    </section>
+
+    <section class="guide-section" aria-labelledby="talk-heading">
+      <div class="section-heading">
+        <p class="section-number">02</p>
+        <div>
+          <h2 id="talk-heading">Add or edit a talk</h2>
+          <p>In Pages CMS, choose <strong>Talks</strong>, then create a new entry or open an existing one.</p>
+        </div>
+      </div>
+
+      <div class="field-grid">
+        <article>
+          <h3>Title and speaker</h3>
+          <p>Use the final public title. Confirm the speaker's name, affiliation, and optional homepage.</p>
+        </article>
+        <article>
+          <h3>Schedule and venue</h3>
+          <p>Use local Technion time. Enter the venue in the compact format <code>RM 864, Amado</code>.</p>
+        </article>
+        <article>
+          <h3>Abstract</h3>
+          <p>Proofread the Markdown. Inline math uses <code>$...$</code>; display math uses <code>$$...$$</code>.</p>
+        </article>
+        <article>
+          <h3>Materials</h3>
+          <p>Add verified public links or files only. Use short labels such as Note, Slides, Poster, or Reference.</p>
+        </article>
+      </div>
+
+      <aside class="callout">
+        <strong>Publication status</strong>
+        <p>Keep incomplete entries as <code>draft</code>. Only entries marked <code>published</code> should appear publicly.</p>
+      </aside>
+    </section>
+
+    <section class="guide-section" aria-labelledby="check-heading">
+      <div class="section-heading">
+        <p class="section-number">03</p>
+        <div>
+          <h2 id="check-heading">Pre-publication check</h2>
+          <p>A short final review prevents most public corrections.</p>
+        </div>
+      </div>
+
+      <ul class="checklist">
+        <li>Speaker name and affiliation are spelled correctly.</li>
+        <li>Date, weekday, start time, end time, and venue agree.</li>
+        <li>Abstract paragraphs and mathematical notation render correctly.</li>
+        <li>Speaker homepage and material links open successfully.</li>
+        <li>No private files or personal contact details are exposed.</li>
+        <li>The talk appears on the intended Upcoming or Previous page.</li>
+      </ul>
+    </section>
+
+    <section class="guide-section" aria-labelledby="settings-heading">
+      <div class="section-heading">
+        <p class="section-number">04</p>
+        <div>
+          <h2 id="settings-heading">Update seminar information</h2>
+          <p>Use <strong>Seminar settings</strong> in Pages CMS for information shared across the website.</p>
+        </div>
+      </div>
+
+      <div class="compact-list">
+        <p><strong>Site information:</strong> title, descriptions, contact email, and office.</p>
+        <p><strong>Submission:</strong> the public Google Form URL used by the Submit page.</p>
+        <p><strong>Participants:</strong> names and optional homepage links.</p>
+      </div>
+    </section>
+
+    <section class="guide-section" aria-labelledby="technical-heading">
+      <div class="section-heading">
+        <p class="section-number">05</p>
+        <div>
+          <h2 id="technical-heading">Technical changes</h2>
+          <p>Use the local repository for layout, code, dependencies, and CMS configuration.</p>
+        </div>
+      </div>
+
+      <div class="code-grid">
+        <div>
+          <h3>Prepare and preview</h3>
+          <pre><code>git pull --ff-only
+pnpm install
+pnpm dev</code></pre>
+        </div>
+        <div>
+          <h3>Validate and publish</h3>
+          <pre><code>pnpm build
+git add --all
+git commit -m "describe the change"
+git push origin main</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section" aria-labelledby="recovery-heading">
+      <div class="section-heading">
+        <p class="section-number">06</p>
+        <div>
+          <h2 id="recovery-heading">Deployment and recovery</h2>
+          <p>Every Pages CMS save and every push to <code>main</code> starts the GitHub Pages workflow.</p>
+        </div>
+      </div>
+
+      <div class="recovery-grid">
+        <article>
+          <h3>If content is wrong</h3>
+          <p>Correct the entry in Pages CMS and save again. The corrective commit will trigger a fresh deployment.</p>
+        </article>
+        <article>
+          <h3>If deployment fails</h3>
+          <p>Open the failed GitHub Actions run, inspect the first error, and reproduce it locally with <code>pnpm build</code>.</p>
+        </article>
+      </div>
+    </section>
+
+    <aside class="prototype-note">
+      <p class="note-label">Prototype notice</p>
+      <p>
+        The current repository generates demonstration talks through <code>src/lib/prototypeTalks.ts</code>.
+        Remove that test-data layer before Pages CMS records become the authoritative seminar content.
+      </p>
+    </aside>
+  </div>
+</BaseLayout>
+
+<style>
+  .maintainer-header {
+    max-width: 56rem;
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .maintainer-header .eyebrow,
+  .note-label {
+    margin: 0 0 0.55rem;
+    color: var(--logistics-blue);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .maintainer-header > p:not(.eyebrow) {
+    max-width: 45rem;
+  }
+
+  .guide-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .guide-actions .button {
+    padding: 0.7rem 1rem;
+  }
+
+  .secondary-action {
+    color: var(--blue-hover);
+    font-weight: 650;
+  }
+
+  .secondary-action:hover {
+    color: var(--blue);
+  }
+
+  .guide-content {
+    margin-inline: clamp(0.5rem, 2vw, 1.5rem);
+  }
+
+  .guide-section {
+    padding: clamp(2rem, 5vw, 3.5rem) 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .section-heading {
+    display: grid;
+    grid-template-columns: 2.3rem minmax(0, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .section-number {
+    margin: 0.12rem 0 0;
+    color: var(--logistics-blue);
+    font-size: 0.82rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .section-heading h2,
+  .field-grid h3,
+  .code-grid h3,
+  .recovery-grid h3 {
+    margin: 0;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .section-heading p:not(.section-number) {
+    max-width: 48rem;
+    margin: 0.55rem 0 0;
+    color: var(--muted);
+  }
+
+  .workflow {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: workflow;
+  }
+
+  .workflow li {
+    position: relative;
+    min-width: 0;
+    padding: 2.7rem 1rem 0 0;
+    counter-increment: workflow;
+  }
+
+  .workflow li::before {
+    content: counter(workflow, decimal-leading-zero);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border-radius: 50%;
+    color: white;
+    background: var(--logistics-blue);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .workflow li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 0.95rem;
+    left: 2.25rem;
+    width: calc(100% - 2.6rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .workflow strong,
+  .workflow span {
+    display: block;
+  }
+
+  .workflow strong {
+    color: var(--blue);
+  }
+
+  .workflow span {
+    margin-top: 0.35rem;
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+
+  .field-grid,
+  .code-grid,
+  .recovery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-left: 3.3rem;
+  }
+
+  .field-grid article,
+  .recovery-grid article {
+    padding: 1.15rem 1.25rem;
+    border: 1px solid var(--line);
+  }
+
+  .field-grid h3,
+  .code-grid h3,
+  .recovery-grid h3 {
+    font-family: inherit;
+    font-size: 0.98rem;
+  }
+
+  .field-grid p,
+  .recovery-grid p {
+    margin: 0.4rem 0 0;
+    color: var(--muted);
+    font-size: 0.91rem;
+  }
+
+  code {
+    padding: 0.08rem 0.3rem;
+    border-radius: 0.2rem;
+    color: var(--blue);
+    background: color-mix(in srgb, var(--logistics-blue) 8%, var(--paper));
+    font-size: 0.88em;
+  }
+
+  .callout,
+  .prototype-note {
+    border-left: 3px solid var(--logistics-blue);
+    background: color-mix(in srgb, var(--logistics-blue) 6%, var(--paper));
+  }
+
+  .callout {
+    margin: 1rem 0 0 3.3rem;
+    padding: 1rem 1.15rem;
+  }
+
+  .callout p {
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+  }
+
+  .checklist {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem 2rem;
+    margin: 0 0 0 3.3rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .checklist li {
+    position: relative;
+    padding-left: 1.4rem;
+  }
+
+  .checklist li::before {
+    content: "";
+    position: absolute;
+    top: 0.58em;
+    left: 0;
+    width: 0.45rem;
+    height: 0.45rem;
+    background: var(--logistics-blue);
+  }
+
+  .compact-list {
+    margin-left: 3.3rem;
+  }
+
+  .compact-list p {
+    margin: 0;
+  }
+
+  .compact-list p + p {
+    margin-top: 0.55rem;
+  }
+
+  .code-grid > div {
+    min-width: 0;
+  }
+
+  pre {
+    margin: 0.7rem 0 0;
+    padding: 1rem 1.1rem;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    background: color-mix(in srgb, var(--logistics-blue) 5%, var(--paper));
+    line-height: 1.65;
+  }
+
+  pre code {
+    padding: 0;
+    color: inherit;
+    background: none;
+    font-size: 0.86rem;
+  }
+
+  .prototype-note {
+    margin: 1.5rem 0 0;
+    padding: 1.2rem 1.3rem;
+  }
+
+  .prototype-note p {
+    margin: 0;
+  }
+
+  .prototype-note p:last-child {
+    max-width: 60rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 58rem) {
+    .workflow {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem 0;
+    }
+
+    .workflow li:nth-child(3)::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 42rem) {
+    .workflow,
+    .field-grid,
+    .code-grid,
+    .recovery-grid,
+    .checklist {
+      grid-template-columns: 1fr;
+    }
+
+    .workflow {
+      gap: 1rem;
+    }
+
+    .workflow li {
+      min-height: 2rem;
+      padding: 0 0 0 3rem;
+    }
+
+    .workflow li::after {
+      display: none;
+    }
+
+    .field-grid,
+    .code-grid,
+    .recovery-grid,
+    .checklist,
+    .compact-list {
+      margin-left: 0;
+    }
+
+    .callout {
+      margin-left: 0;
+    }
+  }
+</style>
