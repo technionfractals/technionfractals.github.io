@@ -1,0 +1,67 @@
+---
+import "katex/dist/katex.min.css";
+import "../styles/global.css";
+import site from "../data/site.json";
+import { formatTalkDate } from "../lib/talks";
+
+interface Props {
+  title?: string;
+  description?: string;
+  current?: "upcoming" | "previous" | "submit" | "about";
+  socialImage?: boolean;
+}
+
+const {
+  title = site.title,
+  description = site.description,
+  current,
+  socialImage = true,
+} = Astro.props;
+
+const pageTitle = title === site.title ? title : `${title} · ${site.title}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const socialImageUrl = new URL("/og-card.png", Astro.site);
+const lastUpdated = formatTalkDate(new Date());
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#002147" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    {socialImage && <meta property="og:image" content={socialImageUrl} />}
+    <meta name="twitter:card" content={socialImage ? "summary_large_image" : "summary"} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" sizes="any" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="/">
+          <span>{site.title}</span>
+          <span class="brand-status">(🚧 Coming soon)</span>
+        </a>
+        <div class="nav-links">
+          <a href="/" aria-current={current === "upcoming" ? "page" : undefined}>Upcoming</a>
+          <a href="/previous/" aria-current={current === "previous" ? "page" : undefined}>Previous</a>
+          <a href="/submit/" aria-current={current === "submit" ? "page" : undefined}>Submit</a>
+          <a href="/about/" aria-current={current === "about" ? "page" : undefined}>About</a>
+        </div>
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>Last updated: {lastUpdated}</span>
+        <span class="footer-copyright">© {site.title}</span>
+      </div>
+    </footer>
+  </body>
+</html>

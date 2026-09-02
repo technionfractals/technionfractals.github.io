@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PaginatedTalkList from "../components/PaginatedTalkList.astro";
+import { getCollection } from "astro:content";
+import { expandPrototypeTalks } from "../lib/prototypeTalks";
+import site from "../data/site.json";
+
+const talks = (await getCollection("talks", ({ data }) => data.status !== "draft"))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const now = new Date();
+const upcoming = expandPrototypeTalks(talks.filter((talk) => talk.data.date >= now), 12, "upcoming");
+---
+
+<BaseLayout title="Upcoming talks" current="upcoming">
+  <header class="page-header">
+    <h1>Upcoming talks</h1>
+    <p>{site.description}</p>
+  </header>
+  <PaginatedTalkList talks={upcoming} emptyMessage="No upcoming talks have been announced." />
+</BaseLayout>

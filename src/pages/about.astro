@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import site from "../data/site.json";
+
+const familyName = (name: string) => name.trim().split(/\s+/).at(-1) ?? name;
+const participants = [...site.participants].sort((a, b) => familyName(a.name).localeCompare(familyName(b.name)));
+---
+
+<BaseLayout title="Welcome!" current="about">
+  <header class="page-header">
+    <h1>Welcome!</h1>
+    <p>{site.aboutDescription}</p>
+  </header>
+
+  <section class="content-grid about-grid">
+    <div>
+      <h2>Regular participants</h2>
+      <ul class="plain-list participant-list">
+        {participants.map((participant) => (
+          <li>
+            {participant.url ? (
+              <a href={participant.url} target="_blank" rel="noopener noreferrer">{participant.name}</a>
+            ) : participant.name}
+          </li>
+        ))}
+      </ul>
+      <p class="participant-note">Fictional names for web testing</p>
+    </div>
+  </section>
+
+  <section class="contact-block">
+    <h2>Contact</h2>
+    <ul class="plain-list contact-list">
+      <li><strong>Email:</strong> {site.contactEmail}</li>
+      <li><strong>Office:</strong> {site.office}</li>
+    </ul>
+  </section>
+</BaseLayout>

@@ -1,0 +1,40 @@
+---
+import type { Talk } from "../lib/talks";
+import { formatTalkDate, formatTalkTime, formatTalkWeekday } from "../lib/talks";
+import { render } from "astro:content";
+
+interface Props { talk: Talk; }
+const { talk } = Astro.props;
+const { Content } = await render(talk);
+const testUrl = "https://example.com/";
+---
+
+<article class="talk">
+  <div class="talk-meta">
+    <time datetime={talk.data.date.toISOString()}>
+      {formatTalkDate(talk.data.date)}, {formatTalkWeekday(talk.data.date)}, {formatTalkTime(talk.data.date)}–{talk.data.endTime}
+    </time>
+    <p class="venue">{talk.data.venue}</p>
+  </div>
+  <div class="talk-content">
+    <div class="talk-title-line">
+      <h3>{talk.data.title}</h3>
+      {talk.data.status === "cancelled" && <span class="status">Cancelled</span>}
+    </div>
+    <p class="speaker-line">
+      <a href={testUrl} target="_blank" rel="noopener noreferrer">{talk.data.speaker}</a>
+      {talk.data.affiliation && <span class="affiliation">{talk.data.affiliation}</span>}
+    </p>
+    <details class="talk-abstract">
+      <summary>Abstract</summary>
+      <div class="prose">
+        {talk.data.summary ? <p>{talk.data.summary}</p> : <Content />}
+      </div>
+    </details>
+    <div class="talk-materials">
+      {talk.data.resources.length > 0 ? (
+        <ul>{talk.data.resources.map((item) => <li><a href={item.url} target="_blank" rel="noopener noreferrer">{item.label}</a></li>)}</ul>
+      ) : <><span class="material-label">Materials</span><span class="material-empty">No materials supplied.</span></>}
+    </div>
+  </div>
+</article>

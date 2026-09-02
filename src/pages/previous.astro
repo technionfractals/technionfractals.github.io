@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PaginatedTalkList from "../components/PaginatedTalkList.astro";
+import { getCollection } from "astro:content";
+import { expandPrototypeTalks } from "../lib/prototypeTalks";
+
+const now = new Date();
+const sources = await getCollection("talks", ({ data }) => data.status !== "draft" && data.date < now);
+const previous = expandPrototypeTalks(sources, 23, "previous");
+---
+
+<BaseLayout title="Previous talks" current="previous">
+  <header class="page-header">
+    <h1>Previous talks</h1>
+  </header>
+  <PaginatedTalkList talks={previous} searchable emptyMessage="Previous talks will appear here." />
+</BaseLayout>

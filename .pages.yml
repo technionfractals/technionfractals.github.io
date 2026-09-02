@@ -1,0 +1,71 @@
+media:
+  - name: materials
+    label: Public materials
+    input: public/materials
+    output: /materials
+    categories: [document]
+
+content:
+  - name: talks
+    label: Talks
+    type: collection
+    path: src/content/talks
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{title}.md"
+    view:
+      fields: [title, speaker, date, status]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: speaker, label: Speaker, type: string, required: true }
+      - { name: affiliation, label: Affiliation, type: string }
+      - { name: date, label: Date and time, type: date, options: { time: true, format: "yyyy-MM-dd'T'HH:mm:ssxxx" }, required: true }
+      - name: endTime
+        label: End time
+        type: string
+        required: true
+        pattern:
+          regex: "^([01]\\d|2[0-3]):[0-5]\\d$"
+          message: "Use 24-hour HH:mm format, for example 15:30."
+      - { name: venue, label: Venue, type: string, required: true, description: "Compact format: RM 864, Amado" }
+      - name: status
+        label: Status
+        type: select
+        default: draft
+        options:
+          values: [draft, published, cancelled]
+      - { name: speakerUrl, label: Speaker webpage, type: string }
+      - name: resources
+        label: Public materials
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string, required: true }
+          - { name: url, label: URL, type: string, required: true }
+      - { name: body, label: Abstract, type: rich-text, required: true }
+
+  - name: site
+    label: Seminar settings
+    type: file
+    path: src/data/site.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - { name: title, label: Site title, type: string, required: true }
+      - { name: description, label: Description, type: text, required: true }
+      - { name: aboutDescription, label: About description, type: text, required: true }
+      - { name: submissionFormUrl, label: Submission form URL, type: string }
+      - { name: contactEmail, label: Contact email, type: string }
+      - { name: office, label: Office, type: string }
+      - name: participants
+        label: Regular participants
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Name, type: string, required: true }
+          - { name: url, label: Homepage, type: string }

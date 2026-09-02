@@ -1,0 +1,88 @@
+---
+import type { Talk } from "../lib/talks";
+import TalkRow from "./TalkRow.astro";
+
+interface Props {
+  talks: Talk[];
+  searchable?: boolean;
+  emptyMessage: string;
+}
+
+const { talks, searchable = false, emptyMessage } = Astro.props;
+---
+
+<section class="talk-section" data-talk-list data-page-size="10">
+  {searchable && (
+    <div class="talk-search" role="search">
+      <label class="sr-only" for="previous-talk-search">Search previous talks</label>
+      <input id="previous-talk-search" type="search" placeholder="Search talks by any relevant keyword." autocomplete="off" data-talk-search />
+    </div>
+  )}
+
+  <div data-talk-items>
+    {talks.length > 0 ? talks.map((talk) => <TalkRow talk={talk} />) : <p class="empty">{emptyMessage}</p>}
+  </div>
+  <p class="empty search-empty" data-search-empty hidden>No talks match your search.</p>
+
+  {talks.length > 10 && (
+    <nav class="pagination" aria-label="Talk pages" data-pagination>
+      <button type="button" data-page-previous aria-label="Previous page">←</button>
+      <div class="pagination-pages" data-page-numbers></div>
+      <button type="button" data-page-next aria-label="Next page">→</button>
+    </nav>
+  )}
+</section>
+
+<script>
+  const initialiseTalkLists = () => {
+    document.querySelectorAll<HTMLElement>("[data-talk-list]").forEach((list) => {
+      if (list.dataset.ready === "true") return;
+      list.dataset.ready = "true";
+
+      const entries = Array.from(list.querySelectorAll<HTMLElement>(".talk"));
+      const pageSize = Number(list.dataset.pageSize) || 10;
+      const input = list.querySelector<HTMLInputElement>("[data-talk-search]");
+      const pagination = list.querySelector<HTMLElement>("[data-pagination]");
+      const pageNumbers = list.querySelector<HTMLElement>("[data-page-numbers]");
+      const previousButton = list.querySelector<HTMLButtonElement>("[data-page-previous]");
+      const nextButton = list.querySelector<HTMLButtonElement>("[data-page-next]");
+      const searchEmpty = list.querySelector<HTMLElement>("[data-search-empty]");
+      let currentPage = 1;
+
+      const render = () => {
+        const query = input?.value.trim().toLocaleLowerCase() ?? "";
+        const matches = entries.filter((entry) => (entry.textContent ?? "").toLocaleLowerCase().includes(query));
+        const pageCount = Math.max(1, Math.ceil(matches.length / pageSize));
+        currentPage = Math.min(currentPage, pageCount);
+        const visible = new Set(matches.slice((currentPage - 1) * pageSize, currentPage * pageSize));
+
+        entries.forEach((entry) => { entry.hidden = !visible.has(entry); });
+        if (searchEmpty) searchEmpty.hidden = matches.length !== 0;
+        if (!pagination || !pageNumbers || !previousButton || !nextButton) return;
+
+        pagination.hidden = matches.length <= pageSize;
+        previousButton.disabled = currentPage === 1;
+        nextButton.disabled = currentPage === pageCount;
+        pageNumbers.replaceChildren();
+
+        for (let page = 1; page <= pageCount; page += 1) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = String(page);
+          button.setAttribute("aria-label", `Page ${page}`);
+          if (page === currentPage) button.setAttribute("aria-current", "page");
+          button.addEventListener("click", () => { currentPage = page; render(); list.scrollIntoView({ behavior: "smooth" }); });
+          pageNumbers.append(button);
+        }
+      };
+
+      input?.addEventListener("input", () => { currentPage = 1; render(); });
+      previousButton?.addEventListener("click", () => { currentPage -= 1; render(); list.scrollIntoView({ behavior: "smooth" }); });
+      nextButton?.addEventListener("click", () => { currentPage += 1; render(); list.scrollIntoView({ behavior: "smooth" }); });
+      render();
+    });
+  };
+
+  initialiseTalkLists();
+  document.addEventListener("astro:page-load", initialiseTalkLists);
+</script>

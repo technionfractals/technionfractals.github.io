@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import site from "../data/site.json";
+---
+
+<BaseLayout title="Submit a talk" current="submit">
+  <section class="submit-page">
+    <div class="submit-action">
+      {site.submissionFormUrl ? (
+        <a class="button" href={site.submissionFormUrl} target="_blank" rel="noopener noreferrer">Submit a talk by Google Form ↗</a>
+      ) : (
+        <div class="action-panel">
+          <p class="panel-label">Form not connected yet</p>
+          <p>Add a free Google Forms URL in Pages CMS to activate this button.</p>
+        </div>
+      )}
+    </div>
+    <p class="submit-requirements"><strong>Required:</strong> email, speaker name, talk title, and abstract.</p>
+    <p class="submit-requirements"><strong>Optional:</strong> speaker affiliation, talk date and time, and others.</p>
+  </section>
+</BaseLayout>
