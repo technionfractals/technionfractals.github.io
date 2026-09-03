@@ -11,19 +11,56 @@
   "about": {
     "description": "We organize this series of seminars to discuss mathematics about fractal geometry and related topics.",
     "participants": [
-      { "name": "Amira Ben-David", "url": "https://example.com/" },
-      { "name": "Daniel Costa" },
-      { "name": "Elena Marković" },
-      { "name": "Lucas Chen" },
-      { "name": "Miriam Goldstein" },
-      { "name": "Nadia Rahman", "url": "https://example.com/" },
-      { "name": "Tobias Keller" },
-      { "name": "Yael Stern" },
-      { "name": "Zhou Feng", "url": "https://zfengg.github.io/" }
+      {
+        "name": "Amira Ben-David",
+        "url": "https://example.com/",
+        "showEmail": false
+      },
+      {
+        "name": "Daniel Costa",
+        "showEmail": false
+      },
+      {
+        "name": "Elena Marković",
+        "showEmail": false
+      },
+      {
+        "name": "Lucas Chen",
+        "showEmail": false
+      },
+      {
+        "name": "Miriam Goldstein",
+        "showEmail": false
+      },
+      {
+        "name": "Nadia Rahman",
+        "url": "https://example.com/",
+        "showEmail": false
+      },
+      {
+        "name": "Tobias Keller",
+        "showEmail": false
+      },
+      {
+        "name": "Yael Stern",
+        "showEmail": false
+      },
+      {
+        "name": "Zhou Feng",
+        "url": "https://zfengg.github.io/",
+        "email": "zfeng@example.com",
+        "showEmail": true
+      }
     ],
     "contacts": [
-      { "label": "Email", "value": "technionfractals AT gmail.com" },
-      { "label": "Office", "value": "Amado, Technion" }
+      {
+        "label": "Email",
+        "value": "technionfractals AT gmail.com"
+      },
+      {
+        "label": "Office",
+        "value": "Amado, Technion"
+      }
     ]
   }
 }
