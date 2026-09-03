@@ -398,10 +398,14 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
   margin: 0 auto;
   padding: 2rem 0 3rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
   gap: 1rem;
   font-size: 0.85rem;
 }
+
+.footer-inner > * { white-space: nowrap; }
 
 .footer-license {
   margin-left: auto;
@@ -483,5 +487,8 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
   .talk time { white-space: normal; }
   .talk-title-line { align-items: flex-start; flex-direction: column; }
   .content-grid { grid-template-columns: 1fr; }
-  .footer-license { display: none; }
+}
+
+@media (max-width: 30rem) {
+  .footer-inner { gap: 0.5rem; font-size: 0.78rem; }
 }
