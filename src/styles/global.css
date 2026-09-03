@@ -347,7 +347,14 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
 
 .participant-list a { color: var(--blue-hover); }
 .participant-list a:hover { color: var(--blue); }
-.participant-email { margin-left: 0.45rem; color: var(--muted); }
+.participant-email,
+.participant-email a {
+  margin-left: 0.45rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.participant-email a { margin-left: 0; }
 
 .submit-page { padding-inline: clamp(0.5rem, 2vw, 1.5rem); }
 
@@ -396,7 +403,11 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
   font-size: 0.85rem;
 }
 
-.footer-copyright { margin-left: auto; text-align: right; }
+.footer-license {
+  margin-left: auto;
+  text-align: right;
+  text-decoration: none;
+}
 
 @media (max-width: 52rem) {
   .nav {
@@ -472,5 +483,5 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
   .talk time { white-space: normal; }
   .talk-title-line { align-items: flex-start; flex-direction: column; }
   .content-grid { grid-template-columns: 1fr; }
-  .footer-copyright { display: none; }
+  .footer-license { display: none; }
 }
