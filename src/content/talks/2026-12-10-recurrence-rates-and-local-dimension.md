@@ -12,4 +12,6 @@ resources:
     label: arXiv
     url: https://arxiv.com
 ---
-Return times reveal the local geometry of an invariant measure. The talk compares recurrence exponents with pointwise dimension in several model systems. $$ happy new year! 8013103 == \frac{p}{q} $$. 
+Return times reveal the local geometry of an invariant measure. The talk compares recurrence exponents with pointwise dimension in several model systems. 
+
+$$ happy new year! 8013103 == \frac{p}{q}. $$
