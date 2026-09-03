@@ -1,9 +1,8 @@
 media:
   - name: materials
     label: Public materials
-    input: public/materials
-    output: /materials
-    categories: [document]
+    input: public
+    output: /
 
 content:
   - name: talks

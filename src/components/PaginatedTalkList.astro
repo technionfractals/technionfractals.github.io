@@ -26,9 +26,11 @@ const { talks, searchable = false, emptyMessage } = Astro.props;
 
   {talks.length > 10 && (
     <nav class="pagination" aria-label="Talk pages" data-pagination>
+      <button type="button" data-page-first aria-label="First page">«</button>
       <button type="button" data-page-previous aria-label="Previous page">←</button>
       <div class="pagination-pages" data-page-numbers></div>
       <button type="button" data-page-next aria-label="Next page">→</button>
+      <button type="button" data-page-last aria-label="Last page">»</button>
     </nav>
   )}
 </section>
@@ -44,9 +46,12 @@ const { talks, searchable = false, emptyMessage } = Astro.props;
       const input = list.querySelector<HTMLInputElement>("[data-talk-search]");
       const pagination = list.querySelector<HTMLElement>("[data-pagination]");
       const pageNumbers = list.querySelector<HTMLElement>("[data-page-numbers]");
+      const firstButton = list.querySelector<HTMLButtonElement>("[data-page-first]");
       const previousButton = list.querySelector<HTMLButtonElement>("[data-page-previous]");
       const nextButton = list.querySelector<HTMLButtonElement>("[data-page-next]");
+      const lastButton = list.querySelector<HTMLButtonElement>("[data-page-last]");
       const searchEmpty = list.querySelector<HTMLElement>("[data-search-empty]");
+      const maxPageButtons = 5;
       let currentPage = 1;
 
       const render = () => {
@@ -58,14 +63,22 @@ const { talks, searchable = false, emptyMessage } = Astro.props;
 
         entries.forEach((entry) => { entry.hidden = !visible.has(entry); });
         if (searchEmpty) searchEmpty.hidden = matches.length !== 0;
-        if (!pagination || !pageNumbers || !previousButton || !nextButton) return;
+        if (!pagination || !pageNumbers || !firstButton || !previousButton || !nextButton || !lastButton) return;
 
         pagination.hidden = matches.length <= pageSize;
+        firstButton.hidden = pageCount <= maxPageButtons;
+        lastButton.hidden = pageCount <= maxPageButtons;
+        firstButton.disabled = currentPage === 1;
         previousButton.disabled = currentPage === 1;
         nextButton.disabled = currentPage === pageCount;
+        lastButton.disabled = currentPage === pageCount;
         pageNumbers.replaceChildren();
 
-        for (let page = 1; page <= pageCount; page += 1) {
+        let firstVisiblePage = Math.max(1, currentPage - Math.floor(maxPageButtons / 2));
+        const lastVisiblePage = Math.min(pageCount, firstVisiblePage + maxPageButtons - 1);
+        firstVisiblePage = Math.max(1, lastVisiblePage - maxPageButtons + 1);
+
+        for (let page = firstVisiblePage; page <= lastVisiblePage; page += 1) {
           const button = document.createElement("button");
           button.type = "button";
           button.textContent = String(page);
@@ -77,8 +90,16 @@ const { talks, searchable = false, emptyMessage } = Astro.props;
       };
 
       input?.addEventListener("input", () => { currentPage = 1; render(); });
+      firstButton?.addEventListener("click", () => { currentPage = 1; render(); list.scrollIntoView({ behavior: "smooth" }); });
       previousButton?.addEventListener("click", () => { currentPage -= 1; render(); list.scrollIntoView({ behavior: "smooth" }); });
       nextButton?.addEventListener("click", () => { currentPage += 1; render(); list.scrollIntoView({ behavior: "smooth" }); });
+      lastButton?.addEventListener("click", () => {
+        const query = input?.value.trim().toLocaleLowerCase() ?? "";
+        const matchCount = entries.filter((entry) => (entry.textContent ?? "").toLocaleLowerCase().includes(query)).length;
+        currentPage = Math.max(1, Math.ceil(matchCount / pageSize));
+        render();
+        list.scrollIntoView({ behavior: "smooth" });
+      });
       render();
     });
   };
