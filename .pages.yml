@@ -23,14 +23,25 @@ content:
       - { name: title, label: Title, type: string, required: true }
       - { name: speaker, label: Speaker, type: string, required: true }
       - { name: affiliation, label: Affiliation, type: string }
-      - { name: date, label: Date and time, type: date, options: { time: true, format: "yyyy-MM-dd'T'HH:mm:ssxxx" }, required: true }
+      - { name: date, label: Date, type: date, options: { time: false, format: "yyyy-MM-dd" }, required: true }
+      - name: startTime
+        label: Start time
+        type: date
+        default: ""
+        required: true
+        options:
+          time: true
+          format: "HH:mm"
+          step: 300
       - name: endTime
         label: End time
-        type: string
+        type: date
+        default: ""
         required: true
-        pattern:
-          regex: "^([01]\\d|2[0-3]):[0-5]\\d$"
-          message: "Use 24-hour HH:mm format, for example 15:30."
+        options:
+          time: true
+          format: "HH:mm"
+          step: 300
       - { name: venue, label: Venue, type: string, required: true, description: "Compact format: RM 864, Amado" }
       - name: status
         label: Status
@@ -40,12 +51,28 @@ content:
           values: [draft, published, cancelled]
       - { name: speakerUrl, label: Speaker webpage, type: string }
       - name: resources
-        label: Public materials
-        type: object
-        list: true
-        fields:
-          - { name: label, label: Label, type: string, required: true }
-          - { name: url, label: URL, type: string, required: true }
+        label: Additional information
+        type: block
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{type}: {label}"
+        blockKey: type
+        blocks:
+          - name: link
+            label: Link
+            fields:
+              - { name: label, label: Label, type: string, required: true }
+              - { name: url, label: URL, type: string, required: true }
+          - name: note
+            label: Note
+            fields:
+              - { name: label, label: Label, type: string, default: "Note", required: true }
+              - { name: text, label: Text, type: rich-text, required: true }
+          - name: text
+            label: Text
+            fields:
+              - { name: text, label: Text, type: rich-text, required: true }
       - { name: body, label: Abstract, type: rich-text, required: true }
 
   - name: site

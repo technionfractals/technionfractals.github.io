@@ -269,7 +269,8 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
   margin-top: 0.15rem;
 }
 
-.talk-abstract summary {
+.talk-abstract summary,
+.talk-note summary {
   width: max-content;
   padding: 0.22rem 0;
   color: var(--ink);
@@ -279,10 +280,14 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
   list-style: none;
 }
 
-.talk-abstract summary::-webkit-details-marker { display: none; }
-.talk-abstract summary::after { content: "  ▸"; color: var(--blue-hover); }
-.talk-abstract[open] summary::after { content: "  ▾"; }
-.talk-abstract[open] summary { color: var(--ink); }
+.talk-abstract summary::-webkit-details-marker,
+.talk-note summary::-webkit-details-marker { display: none; }
+.talk-abstract summary::after,
+.talk-note summary::after { content: "  ▸"; color: var(--blue-hover); }
+.talk-abstract[open] summary::after,
+.talk-note[open] summary::after { content: "  ▾"; }
+.talk-abstract[open] summary,
+.talk-note[open] summary { color: var(--ink); }
 
 .prose {
   width: 100%;
@@ -297,27 +302,32 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
 .prose a, .contact-block a { color: var(--blue-hover); }
 .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.5rem 0; }
 
-.talk-materials {
+.talk-additional {
   max-width: 54rem;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.5rem 1rem;
+  gap: 0.15rem 1rem;
   min-height: 1.65rem;
   padding-top: 0.1rem;
   font-size: 0.86rem;
 }
 
 .material-label { color: var(--blue); font-weight: 400; }
-.talk-materials a { font-weight: 400; }
+.talk-additional a { font-weight: 400; }
 .material-empty { color: var(--muted); }
-.talk-materials ul { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin: 0; padding: 0; list-style: none; }
-.talk-materials a { color: var(--blue-hover); }
+.talk-additional a { color: var(--blue-hover); }
+.talk-link-row { min-height: 1.65rem; display: flex; align-items: center; }
+.talk-text-row { flex-basis: 100%; color: var(--ink); }
+.talk-text-row p { margin: 0; }
+.talk-text-row p + p { margin-top: 0.55rem; }
+
+.talk-note { flex-basis: 100%; margin: 0; }
 
 .speaker-line a:hover,
 .prose a:hover,
 .contact-block a:hover,
-.talk-materials a:hover {
+.talk-additional a:hover {
   color: var(--blue);
 }
 

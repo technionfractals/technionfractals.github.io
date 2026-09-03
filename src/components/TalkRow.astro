@@ -1,18 +1,22 @@
 ---
 import type { Talk } from "../lib/talks";
-import { formatTalkDate, formatTalkTime, formatTalkWeekday } from "../lib/talks";
+import { formatTalkDate, formatTalkWeekday, getTalkDay } from "../lib/talks";
+import { renderMarkdown } from "../lib/markdown";
 import { render } from "astro:content";
 
 interface Props { talk: Talk; }
 const { talk } = Astro.props;
 const { Content } = await render(talk);
 const testUrl = "https://example.com/";
+const additionalHtml = await Promise.all(talk.data.resources.map((item) =>
+  item.type === "link" ? null : renderMarkdown(item.text)
+));
 ---
 
 <article class="talk">
   <div class="talk-meta">
-    <time datetime={talk.data.date.toISOString()}>
-      {formatTalkDate(talk.data.date)}, {formatTalkWeekday(talk.data.date)}, {formatTalkTime(talk.data.date)}–{talk.data.endTime}
+    <time datetime={`${getTalkDay(talk.data.date)}T${talk.data.startTime}`}>
+      {formatTalkDate(talk.data.date)}, {formatTalkWeekday(talk.data.date)}, {talk.data.startTime}–{talk.data.endTime}
     </time>
     <p class="venue">{talk.data.venue}</p>
   </div>
@@ -31,9 +35,20 @@ const testUrl = "https://example.com/";
         {talk.data.summary ? <p>{talk.data.summary}</p> : <Content />}
       </div>
     </details>
-    <div class="talk-materials">
+    <div class="talk-additional">
       {talk.data.resources.length > 0 ? (
-        <ul>{talk.data.resources.map((item) => <li><a href={item.url} target="_blank" rel="noopener noreferrer">{item.label}</a></li>)}</ul>
+        talk.data.resources.map((item, index) => {
+          if (item.type === "link") return (
+            <div class="talk-link-row"><a href={item.url} target="_blank" rel="noopener noreferrer">{item.label}</a></div>
+          );
+          if (item.type === "note") return (
+            <details class="talk-note">
+              <summary>{item.label}</summary>
+              <div class="prose" set:html={additionalHtml[index] ?? ""} />
+            </details>
+          );
+          return <div class="talk-text-row" set:html={additionalHtml[index] ?? ""} />;
+        })
       ) : <><span class="material-label">Materials</span><span class="material-empty">No materials supplied.</span></>}
     </div>
   </div>

@@ -2,11 +2,13 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PaginatedTalkList from "../components/PaginatedTalkList.astro";
 import { getCollection } from "astro:content";
-import { expandPrototypeTalks } from "../lib/prototypeTalks";
+import { compareTalksNewestFirst, getTalkDay } from "../lib/talks";
 
-const now = new Date();
-const sources = await getCollection("talks", ({ data }) => data.status !== "draft" && data.date < now);
-const previous = expandPrototypeTalks(sources, 23, "previous");
+const today = new Intl.DateTimeFormat("en-CA", {
+  year: "numeric", month: "2-digit", day: "2-digit", timeZone: "Asia/Jerusalem",
+}).format(new Date());
+const previous = (await getCollection("talks", ({ data }) => data.status === "published" && getTalkDay(data.date) < today))
+  .sort(compareTalksNewestFirst);
 ---
 
 <BaseLayout title="Previous talks" current="previous">

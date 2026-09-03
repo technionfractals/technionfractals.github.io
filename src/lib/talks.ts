@@ -9,13 +9,24 @@ const datePartsFormatter = new Intl.DateTimeFormat("en-GB", {
 const weekdayFormatter = new Intl.DateTimeFormat("en-GB", {
   weekday: "long", timeZone: "Asia/Jerusalem",
 });
-const timeFormatter = new Intl.DateTimeFormat("en-GB", {
-  hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Jerusalem",
-});
-
 export const formatTalkDate = (date: Date) => {
   const parts = Object.fromEntries(datePartsFormatter.formatToParts(date).map(({ type, value }) => [type, value]));
   return `${parts.day} ${months[Number(parts.month) - 1]} ${parts.year}`;
 };
 export const formatTalkWeekday = (date: Date) => weekdayFormatter.format(date);
-export const formatTalkTime = (date: Date) => timeFormatter.format(date);
+export const getTalkDay = (date: Date) => date.toISOString().slice(0, 10);
+const compareTalkSpeakers = (a: Talk, b: Talk) =>
+  a.data.speaker.localeCompare(b.data.speaker, "en", { sensitivity: "base" })
+  || a.data.title.localeCompare(b.data.title, "en", { sensitivity: "base" });
+export const compareTalksNewestFirst = (a: Talk, b: Talk) => {
+  const dateDifference = b.data.date.getTime() - a.data.date.getTime();
+  return dateDifference
+    || b.data.startTime.localeCompare(a.data.startTime)
+    || compareTalkSpeakers(a, b);
+};
+export const compareTalksSoonestFirst = (a: Talk, b: Talk) => {
+  const dateDifference = a.data.date.getTime() - b.data.date.getTime();
+  return dateDifference
+    || a.data.startTime.localeCompare(b.data.startTime)
+    || compareTalkSpeakers(a, b);
+};
