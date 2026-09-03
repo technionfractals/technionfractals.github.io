@@ -8,7 +8,6 @@ endTime: "13:30"
 venue: "RM 232, Amado"
 status: published
 speakerUrl: "https://example.com/"
-resources: []
 ---
 
 Substitution structure governs spectral behavior and scaling in tiling spaces.
