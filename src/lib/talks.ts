@@ -15,6 +15,18 @@ export const formatTalkDate = (date: Date) => {
 };
 export const formatTalkWeekday = (date: Date) => weekdayFormatter.format(date);
 export const getTalkDay = (date: Date) => date.toISOString().slice(0, 10);
+export const formatTalkTimeZone = (date: Date, timeZone: string) => {
+  const referenceTime = new Date(`${getTalkDay(date)}T12:00:00Z`);
+  const offset = new Intl.DateTimeFormat("en-GB", {
+    timeZone,
+    timeZoneName: "longOffset",
+  }).formatToParts(referenceTime).find(({ type }) => type === "timeZoneName")?.value;
+  if (!offset) return timeZone;
+  return offset
+    .replace("GMT", "UTC")
+    .replace(/^UTC([+-])0?(\d{1,2}):00$/, "UTC$1$2")
+    .replace(/^UTC([+-])0?(\d{1,2}):(\d{2})$/, "UTC$1$2:$3");
+};
 const compareTalkSpeakers = (a: Talk, b: Talk) =>
   a.data.speaker.localeCompare(b.data.speaker, "en", { sensitivity: "base" })
   || a.data.title.localeCompare(b.data.title, "en", { sensitivity: "base" });

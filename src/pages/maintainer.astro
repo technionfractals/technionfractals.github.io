@@ -79,7 +79,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </article>
         <article>
           <h3>Schedule and venue</h3>
-          <p>Use local Technion time. Enter the venue in the compact format <code>RM 864, Amado</code>.</p>
+          <p>Use <code>Asia/Jerusalem</code> for talks in Haifa. For another location, enter its IANA time zone. Enable <strong>Show time zone</strong> only when the UTC offset should appear publicly. Enter the venue in the compact format <code>RM 864, Amado</code>.</p>
         </article>
         <article>
           <h3>Tags</h3>
@@ -122,6 +122,8 @@ affiliation: "Technion"                      # Optional
 date: 2026-10-08                             # Required: YYYY-MM-DD
 startTime: "14:30"                           # Required: 24-hour HH:mm
 endTime: "15:30"                             # Required: 24-hour HH:mm
+timezone: "Asia/Jerusalem"                   # Optional; defaults to Haifa time
+showTimezone: false                          # Optional; hides the UTC offset by default
 venue: "RM 864, Amado"                       # Required
 status: published                            # draft, published, or cancelled
 speakerUrl: "https://example.com/"            # Optional homepage

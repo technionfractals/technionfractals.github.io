@@ -1,6 +1,6 @@
 ---
 import type { Talk } from "../lib/talks";
-import { formatTalkDate, formatTalkWeekday, getTalkDay } from "../lib/talks";
+import { formatTalkDate, formatTalkTimeZone, formatTalkWeekday, getTalkDay } from "../lib/talks";
 import { renderInlineMarkdown, renderMarkdown } from "../lib/markdown";
 import { render } from "astro:content";
 
@@ -19,6 +19,7 @@ const additionalHtml = await Promise.all(talk.data.resources.map((item) =>
   <div class="talk-meta">
     <time datetime={`${getTalkDay(talk.data.date)}T${talk.data.startTime}`}>
       {formatTalkDate(talk.data.date)}, {formatTalkWeekday(talk.data.date)}, {talk.data.startTime}–{talk.data.endTime}
+      {talk.data.showTimezone && <>{" "}<span class="talk-timezone" title={talk.data.timezone}>{formatTalkTimeZone(talk.data.date, talk.data.timezone)}</span></>}
     </time>
     <p class="venue">{talk.data.venue}</p>
   </div>

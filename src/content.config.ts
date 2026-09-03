@@ -37,6 +37,15 @@ const talks = defineCollection({
     date: z.coerce.date(),
     startTime: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),
     endTime: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),
+    timezone: z.string().trim().min(1).refine((value) => {
+      try {
+        new Intl.DateTimeFormat("en", { timeZone: value });
+        return true;
+      } catch {
+        return false;
+      }
+    }, "Use an IANA time zone such as Asia/Jerusalem").default("Asia/Jerusalem"),
+    showTimezone: z.boolean().default(false),
     venue: z.string(),
     status: z.enum(["draft", "published", "cancelled"]).default("draft"),
     speakerUrl: z.union([z.url(), z.literal("")]).optional(),

@@ -41,6 +41,16 @@ content:
           time: true
           format: "HH:mm"
           step: 300
+      - name: timezone
+        label: Time zone
+        type: string
+        default: Asia/Jerusalem
+        required: true
+        description: "IANA time zone; the Haifa default is Asia/Jerusalem"
+      - name: showTimezone
+        label: Show time zone
+        type: boolean
+        default: false
       - { name: venue, label: Venue, type: string, required: true, description: "Compact format: RM 864, Amado" }
       - name: status
         label: Status
