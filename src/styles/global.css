@@ -66,6 +66,10 @@ a:focus-visible {
   letter-spacing: -0.01em;
 }
 
+.nav-toggle {
+  display: none;
+}
+
 .nav-links { display: flex; gap: clamp(1rem, 3vw, 2rem); }
 
 .nav-links a {
@@ -394,12 +398,79 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
 
 .footer-copyright { margin-left: auto; text-align: right; }
 
+@media (max-width: 52rem) {
+  .nav {
+    position: relative;
+    min-height: 4.25rem;
+    gap: 1rem;
+  }
+
+  .nav-toggle {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.68rem;
+    place-content: center;
+    gap: 0.3rem;
+    border: 1px solid var(--line);
+    border-radius: 0.25rem;
+    color: var(--blue);
+    background: var(--paper);
+    cursor: pointer;
+  }
+
+  .nav-toggle:hover {
+    border-color: var(--logistics-blue);
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 1.2rem;
+    height: 2px;
+    background: currentColor;
+    transition: transform 160ms ease, opacity 160ms ease;
+  }
+
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(0.4rem) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-0.4rem) rotate(-45deg);
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: -1rem;
+    left: -1rem;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 1rem 0.75rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    box-shadow: 0 0.75rem 1.5rem rgb(0 33 71 / 8%);
+  }
+
+  .nav-links[data-open="true"] {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 0.65rem 0;
+  }
+}
+
 @media (max-width: 46rem) {
-  .nav { align-items: flex-start; flex-direction: column; gap: 0.75rem; padding: 1rem 0; }
   .talk-meta { align-items: flex-start; flex-direction: column; gap: 0.35rem; }
   .talk .venue { text-align: left; }
   .talk time { white-space: normal; }
   .talk-title-line { align-items: flex-start; flex-direction: column; }
   .content-grid { grid-template-columns: 1fr; }
-  .footer-inner { flex-direction: column; }
+  .footer-copyright { display: none; }
 }

@@ -47,7 +47,18 @@ const lastUpdated = formatTalkDate(new Date());
         <a class="brand" href="/">
           <span>{site.general.title}</span>
         </a>
-        <div class="nav-links">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+          aria-label="Open navigation"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <div class="nav-links" id="primary-navigation" data-open="false">
           <a href="/" aria-current={current === "upcoming" ? "page" : undefined}>Upcoming</a>
           <a href="/previous/" aria-current={current === "previous" ? "page" : undefined}>Previous</a>
           <a href="/submit/" aria-current={current === "submit" ? "page" : undefined}>Submit</a>
@@ -62,5 +73,32 @@ const lastUpdated = formatTalkDate(new Date());
         <span class="footer-copyright">© {site.general.title}</span>
       </div>
     </footer>
+    <script>
+      const navigation = document.querySelector<HTMLElement>(".nav");
+      const toggle = navigation?.querySelector<HTMLButtonElement>(".nav-toggle");
+      const links = navigation?.querySelector<HTMLElement>(".nav-links");
+
+      const setNavigationOpen = (open: boolean) => {
+        if (!toggle || !links) return;
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+        links.dataset.open = String(open);
+      };
+
+      toggle?.addEventListener("click", () => {
+        setNavigationOpen(toggle.getAttribute("aria-expanded") !== "true");
+      });
+
+      links?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => setNavigationOpen(false));
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && toggle?.getAttribute("aria-expanded") === "true") {
+          setNavigationOpen(false);
+          toggle.focus();
+        }
+      });
+    </script>
   </body>
 </html>
