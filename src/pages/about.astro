@@ -29,12 +29,11 @@ const participants = [...site.about.participants as Participant[]].sort((a, b) =
               <a href={participant.url} target="_blank" rel="noopener noreferrer">{participant.name}</a>
             ) : participant.name}
             {participant.showEmail && participant.email && (
-              <span class="participant-email"> · {participant.email}</span>
+              <span class="participant-email">({participant.email})</span>
             )}
           </li>
         ))}
       </ul>
-      <p class="participant-note">Fictional names for web testing</p>
     </div>
   </section>
 

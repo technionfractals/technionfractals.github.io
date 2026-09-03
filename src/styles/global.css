@@ -323,8 +323,7 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
 }
 
 .contact-block {
-  margin: 3rem clamp(0.5rem, 2vw, 1.5rem) 0;
-  padding-top: 2rem;
+  margin: 2.25rem clamp(0.5rem, 2vw, 1.5rem) 0;
 }
 .content-grid h2, .contact-block h2 { margin: 0 0 1rem; font-size: 1.65rem; }
 
@@ -344,8 +343,7 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
 
 .participant-list a { color: var(--blue-hover); }
 .participant-list a:hover { color: var(--blue); }
-.participant-email { color: var(--muted); }
-.participant-note { margin: 0.85rem 0 0; color: var(--muted); font-size: 0.88rem; }
+.participant-email { margin-left: 0.45rem; color: var(--muted); }
 
 .submit-page { padding-inline: clamp(0.5rem, 2vw, 1.5rem); }
 
