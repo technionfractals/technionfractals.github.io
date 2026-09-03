@@ -1,6 +1,6 @@
 media:
   - name: materials
-    label: Public materials
+    label: Public
     input: public
     output: /
 
