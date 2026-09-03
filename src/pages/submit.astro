@@ -6,8 +6,8 @@ import site from "../data/site.json";
 <BaseLayout title="Submit a talk" current="submit">
   <section class="submit-page">
     <div class="submit-action">
-      {site.submissionFormUrl ? (
-        <a class="button" href={site.submissionFormUrl} target="_blank" rel="noopener noreferrer">Submit a talk by Google Form ↗</a>
+      {site.submit.formUrl ? (
+        <a class="button" href={site.submit.formUrl} target="_blank" rel="noopener noreferrer">Submit a talk by Google Form ↗</a>
       ) : (
         <div class="action-panel">
           <p class="panel-label">Form not connected yet</p>

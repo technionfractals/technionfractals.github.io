@@ -16,7 +16,7 @@ const upcoming = talks.filter((talk) => getTalkDay(talk.data.date) >= today);
 <BaseLayout title="Upcoming talks" current="upcoming">
   <header class="page-header">
     <h1>Upcoming talks</h1>
-    <p>{site.description}</p>
+    <p>{site.upcoming.description}</p>
   </header>
   <PaginatedTalkList talks={upcoming} emptyMessage="No upcoming talks have been announced." />
 </BaseLayout>

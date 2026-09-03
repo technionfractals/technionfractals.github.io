@@ -12,13 +12,13 @@ interface Props {
 }
 
 const {
-  title = site.title,
-  description = site.description,
+  title = site.general.title,
+  description = site.upcoming.description,
   current,
   socialImage = true,
 } = Astro.props;
 
-const pageTitle = title === site.title ? title : `${title} · ${site.title}`;
+const pageTitle = title === site.general.title ? title : `${title} · ${site.general.title}`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const socialImageUrl = new URL("/og-card.png", Astro.site);
 const lastUpdated = formatTalkDate(new Date());
@@ -45,7 +45,7 @@ const lastUpdated = formatTalkDate(new Date());
     <header class="site-header">
       <nav class="nav" aria-label="Main navigation">
         <a class="brand" href="/">
-          <span>{site.title}</span>
+          <span>{site.general.title}</span>
           <span class="brand-status">(🚧 Coming soon)</span>
         </a>
         <div class="nav-links">
@@ -60,7 +60,7 @@ const lastUpdated = formatTalkDate(new Date());
     <footer class="site-footer">
       <div class="footer-inner">
         <span>Last updated: {lastUpdated}</span>
-        <span class="footer-copyright">© {site.title}</span>
+        <span class="footer-copyright">© {site.general.title}</span>
       </div>
     </footer>
   </body>

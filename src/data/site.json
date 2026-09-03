@@ -1,19 +1,29 @@
 {
-  "title": "Technion Fractals Seminar",
-  "description": "A series of seminars at Technion, about fractal geometry and related topics. All are welcome!",
-  "aboutDescription": "We organize this series of seminars to discuss mathematics about fractal geometry and related topics.",
-  "submissionFormUrl": "https://forms.gle/sxEzzwiC6yFg3f476",
-  "contactEmail": "technionfractals AT gmail.com",
-  "office": "Amado, Technion",
-  "participants": [
-    { "name": "Amira Ben-David", "url": "https://example.com/" },
-    { "name": "Daniel Costa" },
-    { "name": "Elena Marković" },
-    { "name": "Lucas Chen" },
-    { "name": "Miriam Goldstein" },
-    { "name": "Nadia Rahman", "url": "https://example.com/" },
-    { "name": "Tobias Keller" },
-    { "name": "Yael Stern" },
-    { "name": "Zhou Feng", "url": "https://zfengg.github.io/" }
-  ]
+  "general": {
+    "title": "Technion Fractals Seminar"
+  },
+  "upcoming": {
+    "description": "A series of seminars at Technion, about fractal geometry and related topics. All are welcome!"
+  },
+  "submit": {
+    "formUrl": "https://forms.gle/sxEzzwiC6yFg3f476"
+  },
+  "about": {
+    "description": "We organize this series of seminars to discuss mathematics about fractal geometry and related topics.",
+    "participants": [
+      { "name": "Amira Ben-David", "url": "https://example.com/" },
+      { "name": "Daniel Costa" },
+      { "name": "Elena Marković" },
+      { "name": "Lucas Chen" },
+      { "name": "Miriam Goldstein" },
+      { "name": "Nadia Rahman", "url": "https://example.com/" },
+      { "name": "Tobias Keller" },
+      { "name": "Yael Stern" },
+      { "name": "Zhou Feng", "url": "https://zfengg.github.io/" }
+    ],
+    "contacts": [
+      { "label": "Email", "value": "technionfractals AT gmail.com" },
+      { "label": "Office", "value": "Amado, Technion" }
+    ]
+  }
 }

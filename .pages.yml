@@ -80,28 +80,55 @@ content:
       - { name: body, label: Abstract, type: rich-text, required: true }
 
   - name: site
-    label: Seminar settings
+    label: Site settings
     type: file
     path: src/data/site.json
     format: json
     operations:
       delete: false
     fields:
-      - { name: title, label: Site title, type: string, required: true }
-      - { name: description, label: Description, type: text, required: true }
-      - { name: aboutDescription, label: About description, type: text, required: true }
-      - { name: submissionFormUrl, label: Submission form URL, type: string }
-      - { name: contactEmail, label: Contact email, type: string }
-      - { name: office, label: Office, type: string }
-      - name: participants
-        label: Regular participants
+      - name: general
+        label: General
         type: object
-        list: true
         fields:
-          - { name: name, label: Name, type: string, required: true }
-          - { name: url, label: Homepage, type: string }
-          - { name: email, label: Email, type: string }
-          - name: showEmail
-            label: Show email in participant list
-            type: boolean
-            default: false
+          - { name: title, label: Site title, type: string, required: true }
+      - name: upcoming
+        label: Upcoming
+        type: object
+        fields:
+          - { name: description, label: Upcoming Page Description, type: text, required: true }
+      - name: submit
+        label: Submit
+        type: object
+        fields:
+          - { name: formUrl, label: Submission form URL, type: string }
+      - name: about
+        label: About
+        type: object
+        fields:
+          - { name: description, label: About Page Description, type: text, required: true }
+          - name: participants
+            label: Regular participants
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name}"
+            fields:
+              - { name: name, label: Name, type: string, required: true }
+              - { name: url, label: Homepage, type: string }
+              - { name: email, label: Email, type: string }
+              - name: showEmail
+                label: Show email in participant list
+                type: boolean
+                default: false
+          - name: contacts
+            label: Contact
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}: {value}"
+            fields:
+              - { name: label, label: Label, type: string, required: true }
+              - { name: value, label: Value, type: string, required: true }

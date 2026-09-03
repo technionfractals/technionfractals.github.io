@@ -10,13 +10,13 @@ interface Participant {
 }
 
 const familyName = (name: string) => name.trim().split(/\s+/).at(-1) ?? name;
-const participants = [...site.participants as Participant[]].sort((a, b) => familyName(a.name).localeCompare(familyName(b.name)));
+const participants = [...site.about.participants as Participant[]].sort((a, b) => familyName(a.name).localeCompare(familyName(b.name)));
 ---
 
-<BaseLayout title="Welcome!" current="about">
+<BaseLayout title="Welcome!" description={site.about.description} current="about">
   <header class="page-header">
     <h1>Welcome!</h1>
-    <p>{site.aboutDescription}</p>
+    <p>{site.about.description}</p>
   </header>
 
   <section class="content-grid about-grid">
@@ -41,8 +41,9 @@ const participants = [...site.participants as Participant[]].sort((a, b) => fami
   <section class="contact-block">
     <h2>Contact</h2>
     <ul class="plain-list contact-list">
-      <li><strong>Email:</strong> {site.contactEmail}</li>
-      <li><strong>Office:</strong> {site.office}</li>
+      {site.about.contacts.map((contact) => (
+        <li><strong>{contact.label}:</strong> {contact.value}</li>
+      ))}
     </ul>
   </section>
 </BaseLayout>
