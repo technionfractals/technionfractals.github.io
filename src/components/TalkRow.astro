@@ -1,19 +1,21 @@
 ---
 import type { Talk } from "../lib/talks";
 import { formatTalkDate, formatTalkWeekday, getTalkDay } from "../lib/talks";
-import { renderMarkdown } from "../lib/markdown";
+import { renderInlineMarkdown, renderMarkdown } from "../lib/markdown";
 import { render } from "astro:content";
 
 interface Props { talk: Talk; }
 const { talk } = Astro.props;
 const { Content } = await render(talk);
 const testUrl = "https://example.com/";
+const searchTags = talk.data.tags.join(" ");
+const titleHtml = await renderInlineMarkdown(talk.data.title);
 const additionalHtml = await Promise.all(talk.data.resources.map((item) =>
   item.type === "link" ? null : renderMarkdown(item.text)
 ));
 ---
 
-<article class="talk">
+<article class="talk" data-search-tags={searchTags}>
   <div class="talk-meta">
     <time datetime={`${getTalkDay(talk.data.date)}T${talk.data.startTime}`}>
       {formatTalkDate(talk.data.date)}, {formatTalkWeekday(talk.data.date)}, {talk.data.startTime}–{talk.data.endTime}
@@ -22,7 +24,7 @@ const additionalHtml = await Promise.all(talk.data.resources.map((item) =>
   </div>
   <div class="talk-content">
     <div class="talk-title-line">
-      <h3>{talk.data.title}</h3>
+      <h3 set:html={titleHtml} />
       {talk.data.status === "cancelled" && <span class="status">Cancelled</span>}
     </div>
     <p class="speaker-line">

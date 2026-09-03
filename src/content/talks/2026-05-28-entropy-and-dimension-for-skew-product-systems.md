@@ -8,6 +8,10 @@ endTime: "17:00"
 venue: "RM 814, Amado"
 status: published
 speakerUrl: "https://example.com/"
+tags:
+  - ergodic-theory
+  - skew-products
+  - entropy
 resources:
   - type: link
     label: "Reference"

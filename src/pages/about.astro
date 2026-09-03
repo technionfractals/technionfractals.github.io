@@ -2,8 +2,15 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import site from "../data/site.json";
 
+interface Participant {
+  name: string;
+  url?: string;
+  email?: string;
+  showEmail?: boolean;
+}
+
 const familyName = (name: string) => name.trim().split(/\s+/).at(-1) ?? name;
-const participants = [...site.participants].sort((a, b) => familyName(a.name).localeCompare(familyName(b.name)));
+const participants = [...site.participants as Participant[]].sort((a, b) => familyName(a.name).localeCompare(familyName(b.name)));
 ---
 
 <BaseLayout title="Welcome!" current="about">
@@ -21,6 +28,9 @@ const participants = [...site.participants].sort((a, b) => familyName(a.name).lo
             {participant.url ? (
               <a href={participant.url} target="_blank" rel="noopener noreferrer">{participant.name}</a>
             ) : participant.name}
+            {participant.showEmail && participant.email && (
+              <span class="participant-email"> · {participant.email}</span>
+            )}
           </li>
         ))}
       </ul>

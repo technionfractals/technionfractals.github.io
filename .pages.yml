@@ -49,6 +49,11 @@ content:
         options:
           values: [draft, published, cancelled]
       - { name: speakerUrl, label: Speaker webpage, type: string }
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+        description: "Search keywords that are not displayed on the website"
       - name: resources
         label: Additional information
         type: block
@@ -95,3 +100,8 @@ content:
         fields:
           - { name: name, label: Name, type: string, required: true }
           - { name: url, label: Homepage, type: string }
+          - { name: email, label: Email, type: string }
+          - name: showEmail
+            label: Show email in participant list
+            type: boolean
+            default: false

@@ -40,6 +40,7 @@ const talks = defineCollection({
     venue: z.string(),
     status: z.enum(["draft", "published", "cancelled"]).default("draft"),
     speakerUrl: z.union([z.url(), z.literal("")]).optional(),
+    tags: z.array(z.string().trim().min(1)).default([]),
     summary: z.string().optional(),
     resources,
   }),

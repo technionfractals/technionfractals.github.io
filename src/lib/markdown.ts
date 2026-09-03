@@ -10,3 +10,6 @@ const processor = createMarkdownProcessor({
 
 export const renderMarkdown = async (content: string) =>
   (await (await processor).render(content)).code;
+
+export const renderInlineMarkdown = async (content: string) =>
+  (await renderMarkdown(content)).replace(/^<p>/, "").replace(/<\/p>\s*$/, "");

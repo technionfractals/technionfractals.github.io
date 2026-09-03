@@ -82,6 +82,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <p>Use local Technion time. Enter the venue in the compact format <code>RM 864, Amado</code>.</p>
         </article>
         <article>
+          <h3>Tags</h3>
+          <p>Add concise search keywords as separate list items. Tags help visitors find a talk but are not displayed on the website.</p>
+        </article>
+        <article>
           <h3>Abstract</h3>
           <p>Proofread the Markdown. Inline math uses <code>$...$</code>. For display math, use Source mode and place the opening and closing <code>$$</code> on separate lines:</p>
           <pre class="math-example"><code>{`$$
@@ -100,9 +104,62 @@ $$`}</code></pre>
       </aside>
     </section>
 
-    <section class="guide-section" aria-labelledby="check-heading">
+    <section class="guide-section" aria-labelledby="schema-heading">
       <div class="section-heading">
         <p class="section-number">03</p>
+        <div>
+          <h2 id="schema-heading">Content schema reference</h2>
+          <p>Use these shapes when editing files directly. Pages CMS creates the same structure for you.</p>
+        </div>
+      </div>
+
+      <div class="schema-reference">
+        <h3>Complete talk example</h3>
+        <pre><code>{`---
+title: 'When does $\dim_H(E)=s$?'              # Required; inline LaTeX is allowed
+speaker: "Ada Example"                       # Required
+affiliation: "Technion"                      # Optional
+date: 2026-10-08                             # Required: YYYY-MM-DD
+startTime: "14:30"                           # Required: 24-hour HH:mm
+endTime: "15:30"                             # Required: 24-hour HH:mm
+venue: "RM 864, Amado"                       # Required
+status: published                            # draft, published, or cancelled
+speakerUrl: "https://example.com/"            # Optional homepage
+tags:                                        # Optional hidden search keywords
+  - self-similar-measures
+  - dimension-theory
+  - entropy
+summary: "Optional short plain-text abstract." # Optional; replaces the body below
+resources:                                   # Optional; any number and order
+  - type: link                               # Visible link row
+    label: "Video"
+    url: "https://example.com/video"
+  - type: note                               # Collapsible Markdown and LaTeX
+    label: "Note"
+    text: |-
+      A short note with inline math $s > 0$.
+  - type: text                               # Visible text without a label
+    text: "Slides will be added after the talk."
+---
+
+Write the full Markdown abstract here. It is used when summary is omitted.`}</code></pre>
+
+        <p class="schema-note"><strong>Resources:</strong> <code>link</code> requires <code>label</code> and <code>url</code>; <code>note</code> requires <code>label</code> and <code>text</code>; unlabeled <code>text</code> requires only <code>text</code>.</p>
+
+        <h3>Participant example</h3>
+        <pre><code>{`{
+  "name": "Ada Example",                 // Required
+  "url": "https://example.com/",         // Optional homepage
+  "email": "ada@example.com",            // Optional
+  "showEmail": true                       // Optional; defaults to false
+}`}</code></pre>
+        <p class="schema-note">An email is displayed only when <code>email</code> is present and <code>showEmail</code> is <code>true</code>.</p>
+      </div>
+    </section>
+
+    <section class="guide-section" aria-labelledby="check-heading">
+      <div class="section-heading">
+        <p class="section-number">04</p>
         <div>
           <h2 id="check-heading">Pre-publication check</h2>
           <p>A short final review prevents most public corrections.</p>
@@ -121,7 +178,7 @@ $$`}</code></pre>
 
     <section class="guide-section" aria-labelledby="settings-heading">
       <div class="section-heading">
-        <p class="section-number">04</p>
+        <p class="section-number">05</p>
         <div>
           <h2 id="settings-heading">Update seminar information</h2>
           <p>Use <strong>Seminar settings</strong> in Pages CMS for information shared across the website.</p>
@@ -137,7 +194,7 @@ $$`}</code></pre>
 
     <section class="guide-section" aria-labelledby="technical-heading">
       <div class="section-heading">
-        <p class="section-number">05</p>
+        <p class="section-number">06</p>
         <div>
           <h2 id="technical-heading">Technical changes</h2>
           <p>Use the local repository for layout, code, dependencies, and CMS configuration.</p>
@@ -163,7 +220,7 @@ git push origin main</code></pre>
 
     <section class="guide-section" aria-labelledby="recovery-heading">
       <div class="section-heading">
-        <p class="section-number">06</p>
+        <p class="section-number">07</p>
         <div>
           <h2 id="recovery-heading">Deployment and recovery</h2>
           <p>Every Pages CMS save and every push to <code>main</code> starts the GitHub Pages workflow.</p>
@@ -185,7 +242,7 @@ git push origin main</code></pre>
     <aside class="prototype-note">
       <p class="note-label">Demonstration content</p>
       <p>
-        The repository currently contains 65 fictional talk records for testing search, pagination, and the CMS.
+        The repository currently contains 66 fictional talk records for testing search, pagination, and the CMS.
         Each record can now be edited or replaced through Pages CMS. Replace the fictional content before public launch.
       </p>
     </aside>
@@ -258,6 +315,7 @@ git push origin main</code></pre>
 
   .section-heading h2,
   .field-grid h3,
+  .schema-reference h3,
   .code-grid h3,
   .recovery-grid h3 {
     margin: 0;
@@ -347,6 +405,7 @@ git push origin main</code></pre>
   }
 
   .field-grid h3,
+  .schema-reference h3,
   .code-grid h3,
   .recovery-grid h3 {
     font-family: inherit;
@@ -364,6 +423,21 @@ git push origin main</code></pre>
     margin-top: 0.65rem;
     padding: 0.65rem 0.8rem;
     font-size: 0.84rem;
+  }
+
+  .schema-reference {
+    margin-left: 3.3rem;
+  }
+
+  .schema-reference h3:not(:first-child) {
+    margin-top: 1.75rem;
+  }
+
+  .schema-note {
+    max-width: 58rem;
+    margin: 0.7rem 0 0;
+    color: var(--muted);
+    font-size: 0.91rem;
   }
 
   code {
@@ -498,7 +572,8 @@ git push origin main</code></pre>
     .code-grid,
     .recovery-grid,
     .checklist,
-    .compact-list {
+    .compact-list,
+    .schema-reference {
       margin-left: 0;
     }
 

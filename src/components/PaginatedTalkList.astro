@@ -56,7 +56,10 @@ const { talks, searchable = false, emptyMessage } = Astro.props;
 
       const render = () => {
         const query = input?.value.trim().toLocaleLowerCase() ?? "";
-        const matches = entries.filter((entry) => (entry.textContent ?? "").toLocaleLowerCase().includes(query));
+        const matches = entries.filter((entry) => {
+          const searchText = `${entry.textContent ?? ""} ${entry.dataset.searchTags ?? ""}`.toLocaleLowerCase();
+          return searchText.includes(query);
+        });
         const pageCount = Math.max(1, Math.ceil(matches.length / pageSize));
         currentPage = Math.min(currentPage, pageCount);
         const visible = new Set(matches.slice((currentPage - 1) * pageSize, currentPage * pageSize));
@@ -95,7 +98,10 @@ const { talks, searchable = false, emptyMessage } = Astro.props;
       nextButton?.addEventListener("click", () => { currentPage += 1; render(); list.scrollIntoView({ behavior: "smooth" }); });
       lastButton?.addEventListener("click", () => {
         const query = input?.value.trim().toLocaleLowerCase() ?? "";
-        const matchCount = entries.filter((entry) => (entry.textContent ?? "").toLocaleLowerCase().includes(query)).length;
+        const matchCount = entries.filter((entry) => {
+          const searchText = `${entry.textContent ?? ""} ${entry.dataset.searchTags ?? ""}`.toLocaleLowerCase();
+          return searchText.includes(query);
+        }).length;
         currentPage = Math.max(1, Math.ceil(matchCount / pageSize));
         render();
         list.scrollIntoView({ behavior: "smooth" });
