@@ -377,9 +377,6 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
   border: 0;
 }
 
-.submit-requirements { margin: 0; text-align: center; }
-.submit-requirements + .submit-requirements { margin-top: 0.4rem; }
-
 .action-panel { padding: 1.5rem; border: 1px solid var(--line); background: var(--surface); }
 .action-panel p { margin: 0; color: var(--muted); }
 .action-panel .panel-label { margin-bottom: 0.5rem; color: var(--blue); font-weight: 700; }

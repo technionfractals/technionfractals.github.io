@@ -4,6 +4,9 @@ import site from "../data/site.json";
 ---
 
 <BaseLayout title="Submit a talk" current="submit">
+  <header class="page-header">
+    <h1>Submit a talk</h1>
+  </header>
   <section class="submit-page">
     <div class="submit-action">
       {site.submit.formUrl ? (
@@ -22,8 +25,6 @@ import site from "../data/site.json";
         </div>
       )}
     </div>
-    <p class="submit-requirements"><strong>Required:</strong> email, speaker name, talk title, and abstract.</p>
-    <p class="submit-requirements"><strong>Optional:</strong> speaker affiliation, talk date and time, and others.</p>
   </section>
 </BaseLayout>
 
