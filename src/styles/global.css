@@ -362,12 +362,19 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
 .submit-action {
   display: flex;
   justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .submit-action .button {
   padding: 1.45rem 3rem;
   font-size: 1.45rem;
+}
+
+.tally-embed {
+  display: block;
+  width: 100%;
+  max-width: 52rem;
+  border: 0;
 }
 
 .submit-requirements { margin: 0; text-align: center; }

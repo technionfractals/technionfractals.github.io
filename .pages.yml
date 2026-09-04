@@ -111,7 +111,7 @@ content:
         label: Submit
         type: object
         fields:
-          - { name: formUrl, label: Submission form URL, type: string }
+          - { name: formUrl, label: Tally embed URL, type: string }
       - name: about
         label: About
         type: object

@@ -7,11 +7,18 @@ import site from "../data/site.json";
   <section class="submit-page">
     <div class="submit-action">
       {site.submit.formUrl ? (
-        <a class="button" href={site.submit.formUrl} target="_blank" rel="noopener noreferrer">Submit a talk via Google Forms ↗</a>
+        <iframe
+          class="tally-embed"
+          data-tally-src={site.submit.formUrl}
+          loading="lazy"
+          width="100%"
+          height="200"
+          title="Talk Submission for Technion Fractals"
+        ></iframe>
       ) : (
         <div class="action-panel">
           <p class="panel-label">Form not connected yet</p>
-          <p>Add a free Google Forms URL in Pages CMS to activate this button.</p>
+          <p>Add a Tally embed URL in Pages CMS to activate the submission form.</p>
         </div>
       )}
     </div>
@@ -19,3 +26,30 @@ import site from "../data/site.json";
     <p class="submit-requirements"><strong>Optional:</strong> speaker affiliation, talk date and time, and others.</p>
   </section>
 </BaseLayout>
+
+<script is:inline>
+  (() => {
+    const documentRef = document;
+    const scriptUrl = "https://tally.so/widgets/embed.js";
+    const loadEmbeds = () => {
+      if (typeof Tally !== "undefined") {
+        Tally.loadEmbeds();
+        return;
+      }
+
+      documentRef.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((frame) => {
+        frame.src = frame.dataset.tallySrc;
+      });
+    };
+
+    if (typeof Tally !== "undefined") {
+      loadEmbeds();
+    } else if (!documentRef.querySelector(`script[src="${scriptUrl}"]`)) {
+      const script = documentRef.createElement("script");
+      script.src = scriptUrl;
+      script.onload = loadEmbeds;
+      script.onerror = loadEmbeds;
+      documentRef.body.appendChild(script);
+    }
+  })();
+</script>
