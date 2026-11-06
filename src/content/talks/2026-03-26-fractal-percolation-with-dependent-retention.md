@@ -2,9 +2,8 @@
 title: "Fractal percolation with dependent retention"
 speaker: "Sofia Almeida"
 affiliation: "University of Porto"
-date: 2026-03-26
-startTime: "16:30"
-endTime: "17:30"
+startTime: "2026-03-26T16:30"
+duration: 60
 venue: "RM 201, Taub"
 status: demo
 speakerUrl: "https://example.com/"

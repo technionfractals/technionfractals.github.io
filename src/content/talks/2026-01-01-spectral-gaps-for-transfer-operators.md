@@ -2,9 +2,8 @@
 title: "Spectral gaps for transfer operators"
 speaker: "Maya Levin"
 affiliation: "Technion"
-date: 2026-01-01
-startTime: "16:30"
-endTime: "17:30"
+startTime: "2026-01-01T16:30"
+duration: 60
 venue: "RM 617, Meyer"
 status: demo
 speakerUrl: "https://example.com/"

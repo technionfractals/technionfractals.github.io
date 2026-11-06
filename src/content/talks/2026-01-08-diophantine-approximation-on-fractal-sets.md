@@ -2,9 +2,8 @@
 title: "Diophantine approximation on fractal sets"
 speaker: "Samuel Price"
 affiliation: "University of Bristol"
-date: 2026-01-08
-startTime: "14:00"
-endTime: "15:30"
+startTime: "2026-01-08T14:00"
+duration: 90
 venue: "RM 814, Amado"
 status: demo
 speakerUrl: "https://example.com/"

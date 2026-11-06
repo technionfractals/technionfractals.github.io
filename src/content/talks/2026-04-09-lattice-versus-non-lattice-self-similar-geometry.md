@@ -2,9 +2,8 @@
 title: "Lattice versus non-lattice self-similar geometry"
 speaker: "Elena Rossi"
 affiliation: "University of Pisa"
-date: 2026-04-09
-startTime: "12:30"
-endTime: "13:30"
+startTime: "2026-04-09T12:30"
+duration: 60
 venue: "RM 232, Amado"
 status: demo
 speakerUrl: "https://example.com/"

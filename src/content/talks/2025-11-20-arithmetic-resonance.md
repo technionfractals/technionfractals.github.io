@@ -2,9 +2,8 @@
 title: "Arithmetic resonance in product sets"
 speaker: "Xenia Fischer"
 affiliation: "University of Freiburg"
-date: 2025-11-20
-startTime: "16:30"
-endTime: "17:30"
+startTime: "2025-11-20T16:30"
+duration: 60
 venue: "RM 814, Amado"
 status: demo
 speakerUrl: "https://example.com/"

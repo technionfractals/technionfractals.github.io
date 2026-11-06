@@ -2,9 +2,8 @@
 title: "Fourier dimension of nonlinear images"
 speaker: "Lina Petrov"
 affiliation: "University of Warsaw"
-date: 2025-08-21
-startTime: "16:00"
-endTime: "17:00"
+startTime: "2025-08-21T16:00"
+duration: 60
 venue: "RM 232, Amado"
 status: demo
 speakerUrl: "https://example.com/"

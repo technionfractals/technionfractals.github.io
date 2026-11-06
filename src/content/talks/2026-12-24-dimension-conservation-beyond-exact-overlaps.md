@@ -2,9 +2,8 @@
 title: Dimension conservation beyond exact overlaps
 speaker: Jonas Weber
 affiliation: University of Bonn
-date: 2026-12-24
-startTime: 16:30
-endTime: 17:34
+startTime: "2026-12-24T16:30"
+duration: 64
 venue: Taub 202
 status: demo
 speakerUrl: https://example.com/

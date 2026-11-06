@@ -2,9 +2,8 @@
 title: "Lyapunov dimension for random products"
 speaker: "Priya Raman"
 affiliation: "University of Oxford"
-date: 2025-09-18
-startTime: "16:30"
-endTime: "17:30"
+startTime: "2025-09-18T16:30"
+duration: 60
 venue: "RM 201, Taub"
 status: demo
 speakerUrl: "https://example.com/"

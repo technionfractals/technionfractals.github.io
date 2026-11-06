@@ -1,9 +1,8 @@
 ---
 title: OpenAI's proof of the exact overlaps conjecture
 speaker: Zhou Feng
-date: 2026-11-05
-startTime: 14:30
-endTime: 16:30
+startTime: "2026-11-05T14:30"
+duration: 120
 timezone: Asia/Jerusalem
 showTimezone: false
 venue: RM 614, Amado

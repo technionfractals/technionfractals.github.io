@@ -2,9 +2,8 @@
 title: "Shrinking targets in symbolic dynamics"
 speaker: "Nora Feldman"
 affiliation: "Weizmann Institute of Science"
-date: 2026-11-12
-startTime: "16:30"
-endTime: "17:30"
+startTime: "2026-11-12T16:30"
+duration: 60
 venue: "RM 864, Amado"
 status: demo
 speakerUrl: "https://example.com/"

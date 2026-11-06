@@ -2,9 +2,8 @@
 title: "Fractal uncertainty principles in open dynamics"
 speaker: "Amir Cohen"
 affiliation: "Tel Aviv University"
-date: 2026-12-17
-startTime: "14:00"
-endTime: "15:30"
+startTime: "2026-12-17T14:00"
+duration: 90
 venue: "RM 864, Amado"
 status: demo
 speakerUrl: "https://example.com/"

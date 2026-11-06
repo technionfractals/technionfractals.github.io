@@ -2,9 +2,8 @@
 title: "Exceptional directions in Marstrand projection theory"
 speaker: "Amir Cohen"
 affiliation: "Tel Aviv University"
-date: 2026-05-21
-startTime: "12:30"
-endTime: "13:30"
+startTime: "2026-05-21T12:30"
+duration: 60
 venue: "RM 617, Meyer"
 status: demo
 speakerUrl: "https://example.com/"

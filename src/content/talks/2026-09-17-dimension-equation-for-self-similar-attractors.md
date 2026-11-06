@@ -2,9 +2,8 @@
 title: 'When does $\dim_{\mathrm{H}}(E)=s$ for a self-similar attractor?'
 speaker: "Noam Adler"
 affiliation: "Hebrew University of Jerusalem"
-date: 2026-09-17
-startTime: "14:30"
-endTime: "15:30"
+startTime: "2026-09-17T14:30"
+duration: 60
 venue: "RM 864, Amado"
 status: demo
 speakerUrl: "https://example.com/"

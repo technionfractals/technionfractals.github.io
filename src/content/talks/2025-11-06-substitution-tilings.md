@@ -2,9 +2,8 @@
 title: "Substitution tilings and spectral measures"
 speaker: "Vera Kuznetsov"
 affiliation: "University of Helsinki"
-date: 2025-11-06
-startTime: "12:30"
-endTime: "13:30"
+startTime: "2025-11-06T12:30"
+duration: 60
 venue: "RM 232, Amado"
 status: demo
 speakerUrl: "https://example.com/"

@@ -2,9 +2,8 @@
 title: "Visible parts of random fractals"
 speaker: "Jonas Weber"
 affiliation: "University of Bonn"
-date: 2026-01-29
-startTime: "15:00"
-endTime: "16:00"
+startTime: "2026-01-29T15:00"
+duration: 60
 venue: "RM 232, Amado"
 status: demo
 speakerUrl: "https://example.com/"

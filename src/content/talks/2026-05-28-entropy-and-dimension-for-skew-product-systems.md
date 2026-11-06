@@ -2,9 +2,8 @@
 title: "Entropy and dimension for skew-product systems"
 speaker: "Daniel Kim"
 affiliation: "KAIST"
-date: 2026-05-28
-startTime: "16:00"
-endTime: "17:00"
+startTime: "2026-05-28T16:00"
+duration: 60
 venue: "RM 814, Amado"
 status: demo
 speakerUrl: "https://example.com/"

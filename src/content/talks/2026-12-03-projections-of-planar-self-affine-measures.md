@@ -2,9 +2,8 @@
 title: "Projections of planar self-affine measures"
 speaker: "Noam Barak"
 affiliation: "Hebrew University of Jerusalem"
-date: 2026-12-03
-startTime: "16:00"
-endTime: "17:30"
+startTime: "2026-12-03T16:00"
+duration: 90
 venue: "RM 617, Meyer"
 status: demo
 speakerUrl: "https://example.com/"

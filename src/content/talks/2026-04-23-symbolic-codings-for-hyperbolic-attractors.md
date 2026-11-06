@@ -2,9 +2,8 @@
 title: "Symbolic codings for hyperbolic attractors"
 speaker: "Samuel Price"
 affiliation: "University of Bristol"
-date: 2026-04-23
-startTime: "15:00"
-endTime: "16:00"
+startTime: "2026-04-23T15:00"
+duration: 60
 venue: "RM 814, Amado"
 status: demo
 speakerUrl: "https://example.com/"

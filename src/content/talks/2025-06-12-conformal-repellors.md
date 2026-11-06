@@ -2,9 +2,8 @@
 title: "Dimensions of conformal repellors"
 speaker: "Clara Stein"
 affiliation: "University of Vienna"
-date: 2025-06-12
-startTime: "15:00"
-endTime: "16:00"
+startTime: "2025-06-12T15:00"
+duration: 60
 venue: "RM 617, Meyer"
 status: demo
 speakerUrl: "https://example.com/"

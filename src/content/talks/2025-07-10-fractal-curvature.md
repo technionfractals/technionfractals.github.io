@@ -2,9 +2,8 @@
 title: "Fractal curvature measures"
 speaker: "Greta Hoffmann"
 affiliation: "TU Berlin"
-date: 2025-07-10
-startTime: "15:00"
-endTime: "16:00"
+startTime: "2025-07-10T15:00"
+duration: 60
 venue: "RM 232, Amado"
 status: demo
 speakerUrl: "https://example.com/"

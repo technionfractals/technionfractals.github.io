@@ -2,9 +2,8 @@
 title: "Random walks on groups of circle diffeomorphisms"
 speaker: "Ethan Miller"
 affiliation: "University of Warwick"
-date: 2026-05-07
-startTime: "16:30"
-endTime: "17:30"
+startTime: "2026-05-07T16:30"
+duration: 60
 venue: "RM 864, Amado"
 status: demo
 speakerUrl: "https://example.com/"

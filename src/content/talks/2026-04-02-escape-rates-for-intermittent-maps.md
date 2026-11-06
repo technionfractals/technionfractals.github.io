@@ -2,9 +2,8 @@
 title: "Escape rates for intermittent maps"
 speaker: "Lea Martin"
 affiliation: "Université Paris-Saclay"
-date: 2026-04-02
-startTime: "14:00"
-endTime: "15:30"
+startTime: "2026-04-02T14:00"
+duration: 90
 venue: "RM 864, Amado"
 status: demo
 speakerUrl: "https://example.com/"

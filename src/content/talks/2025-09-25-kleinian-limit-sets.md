@@ -2,9 +2,8 @@
 title: "Kleinian limit sets and pressure"
 speaker: "Quentin Meyer"
 affiliation: "University of Strasbourg"
-date: 2025-09-25
-startTime: "14:30"
-endTime: "15:30"
+startTime: "2025-09-25T14:30"
+duration: 60
 venue: "RM 232, Amado"
 status: demo
 speakerUrl: "https://example.com/"

@@ -2,9 +2,8 @@
 title: "Quasisymmetric distortion of metric boundaries"
 speaker: "Daniel Kim"
 affiliation: "KAIST"
-date: 2026-02-12
-startTime: "16:30"
-endTime: "17:30"
+startTime: "2026-02-12T16:30"
+duration: 60
 venue: "RM 814, Amado"
 status: demo
 speakerUrl: "https://example.com/"

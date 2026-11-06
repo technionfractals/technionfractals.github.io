@@ -2,9 +2,8 @@
 title: "Harmonic measure on rough boundaries"
 speaker: "William Hart"
 affiliation: "Imperial College London"
-date: 2025-11-13
-startTime: "15:00"
-endTime: "16:00"
+startTime: "2025-11-13T15:00"
+duration: 60
 venue: "RM 617, Meyer"
 status: demo
 speakerUrl: "https://example.com/"

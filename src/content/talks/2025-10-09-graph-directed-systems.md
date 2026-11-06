@@ -2,9 +2,8 @@
 title: "Graph-directed systems with overlaps"
 speaker: "Samuel Green"
 affiliation: "University of Leeds"
-date: 2025-10-09
-startTime: "15:00"
-endTime: "16:00"
+startTime: "2025-10-09T15:00"
+duration: 60
 venue: "RM 814, Amado"
 status: demo
 speakerUrl: "https://example.com/"

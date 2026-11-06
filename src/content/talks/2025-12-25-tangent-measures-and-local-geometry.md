@@ -2,9 +2,8 @@
 title: "Tangent measures and local geometry"
 speaker: "Elena Rossi"
 affiliation: "University of Pisa"
-date: 2025-12-25
-startTime: "14:30"
-endTime: "16:00"
+startTime: "2025-12-25T14:30"
+duration: 90
 venue: "RM 232, Amado"
 status: demo
 speakerUrl: "https://example.com/"

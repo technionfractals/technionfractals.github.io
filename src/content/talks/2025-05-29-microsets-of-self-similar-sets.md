@@ -2,9 +2,8 @@
 title: "Microsets of self-similar sets"
 speaker: "Ada Rosen"
 affiliation: "University of Haifa"
-date: 2025-05-29
-startTime: "14:30"
-endTime: "15:30"
+startTime: "2025-05-29T14:30"
+duration: 60
 venue: "RM 201, Taub"
 status: demo
 speakerUrl: "https://example.com/"

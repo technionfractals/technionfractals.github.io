@@ -1,9 +1,8 @@
 ---
 title: Recurrence rates and local dimension
 speaker: Daniel Kim
-date: 2026-12-10
-startTime: 12:30
-endTime: 13:30
+startTime: "2026-12-10T12:30"
+duration: 60
 venue: RM 232, Amado
 status: demo
 speakerUrl: https://example.com/

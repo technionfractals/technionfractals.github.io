@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PaginatedTalkList from "../components/PaginatedTalkList.astro";
 import { getCollection } from "astro:content";
-import { compareTalksSoonestFirst, getTalkDay } from "../lib/talks";
+import { compareTalksSoonestFirst } from "../lib/talks";
 import site from "../data/site.json";
 
 const talks = (await getCollection("talks", ({ data }) => data.status === "published"))
@@ -10,7 +10,7 @@ const talks = (await getCollection("talks", ({ data }) => data.status === "publi
 const today = new Intl.DateTimeFormat("en-CA", {
   year: "numeric", month: "2-digit", day: "2-digit", timeZone: "Asia/Jerusalem",
 }).format(new Date());
-const upcoming = talks.filter((talk) => getTalkDay(talk.data.date) >= today);
+const upcoming = talks.filter((talk) => talk.data.startTime.slice(0, 10) >= today);
 ---
 
 <BaseLayout title="Upcoming talks" current="upcoming">

@@ -2,9 +2,8 @@
 title: "Random Cantor measures"
 speaker: "Benoit Laurent"
 affiliation: "Université de Lyon"
-date: 2025-06-05
-startTime: "12:30"
-endTime: "13:30"
+startTime: "2025-06-05T12:30"
+duration: 60
 venue: "RM 232, Amado"
 status: demo
 speakerUrl: "https://example.com/"

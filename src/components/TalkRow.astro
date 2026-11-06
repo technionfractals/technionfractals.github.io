@@ -1,25 +1,30 @@
 ---
 import type { Talk } from "../lib/talks";
-import { formatTalkDate, formatTalkTimeZone, formatTalkWeekday, getTalkDay } from "../lib/talks";
+import { formatTalkSchedule, formatTalkTimeZone, getTalkInstant } from "../lib/talks";
 import { renderInlineMarkdown, renderMarkdown } from "../lib/markdown";
 import { render } from "astro:content";
 
 interface Props { talk: Talk; }
 const { talk } = Astro.props;
+const { startTime, duration, timezone, showTimezone } = talk.data;
+const [day, time] = startTime.split("T");
+const start = getTalkInstant(day, time, timezone);
+const displayStart = start ?? new Date(`${startTime}Z`);
+const end = new Date(displayStart.getTime() + duration * 60_000);
 const { Content } = await render(talk);
 const testUrl = "https://example.com/";
 const searchTags = talk.data.tags.join(" ");
 const titleHtml = await renderInlineMarkdown(talk.data.title);
 const additionalHtml = await Promise.all(talk.data.resources.map((item) =>
-  item.type === "link" ? null : renderMarkdown(item.text)
+  "text" in item ? renderMarkdown(item.text) : null
 ));
 ---
 
 <article class="talk" data-search-tags={searchTags}>
   <div class="talk-meta">
-    <time datetime={`${getTalkDay(talk.data.date)}T${talk.data.startTime}`}>
-      {formatTalkDate(talk.data.date)}, {formatTalkWeekday(talk.data.date)}, {talk.data.startTime}–{talk.data.endTime}
-      {talk.data.showTimezone && <>{" "}<span class="talk-timezone" title={talk.data.timezone}>{formatTalkTimeZone(talk.data.date, talk.data.timezone)}</span></>}
+    <time datetime={start?.toISOString() ?? startTime} data-talk-end={start && end.toISOString()} data-source-zone={timezone}>
+      <span data-talk-schedule>{formatTalkSchedule(displayStart, end, start ? timezone : "UTC")}</span>
+      <span class="talk-timezone" title={timezone} hidden={!showTimezone}>{start ? formatTalkTimeZone(start, timezone) : timezone}</span>
     </time>
     <p class="venue">{talk.data.venue}</p>
   </div>
@@ -38,10 +43,10 @@ const additionalHtml = await Promise.all(talk.data.resources.map((item) =>
         {talk.data.summary ? <p>{talk.data.summary}</p> : <Content />}
       </div>
     </details>
-    <div class="talk-additional">
-      {talk.data.resources.length > 0 ? (
-        talk.data.resources.map((item, index) => {
-          if (item.type === "link") return (
+    {talk.data.resources.length > 0 && (
+      <div class="talk-additional">
+        {talk.data.resources.map((item, index) => {
+          if ("url" in item) return (
             <div class="talk-link-row"><a href={item.url} target="_blank" rel="noopener noreferrer">{item.label}</a></div>
           );
           if (item.type === "note") return (
@@ -51,8 +56,28 @@ const additionalHtml = await Promise.all(talk.data.resources.map((item) =>
             </details>
           );
           return <div class="talk-text-row" set:html={additionalHtml[index] ?? ""} />;
-        })
-      ) : <><span class="material-label">Materials</span><span class="material-empty">No materials supplied.</span></>}
-    </div>
+        })}
+      </div>
+    )}
   </div>
 </article>
+
+<script>
+  import { formatTalkSchedule, formatTalkTimeZone } from "../lib/talks";
+
+  const viewerZone = new Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  for (const time of document.querySelectorAll<HTMLTimeElement>("time[data-talk-end]")) {
+    if (!time.dateTime.endsWith("Z") || !time.dataset.talkEnd) continue;
+    const start = new Date(time.dateTime);
+    const end = new Date(time.dataset.talkEnd);
+    const schedule = time.querySelector<HTMLElement>("[data-talk-schedule]");
+    const zone = time.querySelector<HTMLElement>(".talk-timezone");
+    if (!schedule || !zone) continue;
+
+    schedule.textContent = formatTalkSchedule(start, end, viewerZone);
+    zone.hidden = zone.hidden && viewerZone === time.dataset.sourceZone;
+    zone.title = viewerZone;
+    zone.textContent = formatTalkTimeZone(start, viewerZone);
+  }
+</script>

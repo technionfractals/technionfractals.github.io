@@ -2,9 +2,8 @@
 title: "A spectrum of intermediate dimensions"
 speaker: "Hannah Klein"
 affiliation: "University of Bristol"
-date: 2025-07-17
-startTime: "16:30"
-endTime: "17:30"
+startTime: "2025-07-17T16:30"
+duration: 60
 venue: "RM 617, Meyer"
 status: demo
 speakerUrl: "https://example.com/"

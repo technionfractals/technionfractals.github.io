@@ -2,9 +2,8 @@
 title: "Recurrence in dispersing billiards"
 speaker: "Talia Weiss"
 affiliation: "Tel Aviv University"
-date: 2025-10-16
-startTime: "16:00"
-endTime: "17:00"
+startTime: "2025-10-16T16:00"
+duration: 60
 venue: "RM 864, Amado"
 status: demo
 speakerUrl: "https://example.com/"

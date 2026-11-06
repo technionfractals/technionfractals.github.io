@@ -2,9 +2,8 @@
 title: "Rigidity phenomena for conformal iterated function systems"
 speaker: "Rina Sato"
 affiliation: "Kyoto University"
-date: 2026-11-05
-startTime: "14:00"
-endTime: "15:30"
+startTime: "2026-11-05T14:00"
+duration: 90
 venue: "RM 232, Amado"
 status: demo
 speakerUrl: "https://example.com/"

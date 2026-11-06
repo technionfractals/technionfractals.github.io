@@ -2,9 +2,8 @@
 title: Title created by Pages CMS
 speaker: CMS Pages
 affiliation: OpenAI
-date: 2026-09-02
-startTime: 08:32
-endTime: 18:30
+startTime: "2026-09-02T08:32"
+duration: 598
 venue: Heaven
 status: demo
 speakerUrl: https://example.com/

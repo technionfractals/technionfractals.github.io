@@ -2,9 +2,8 @@
 title: "Furstenberg measures and stationary fractal distributions"
 speaker: "Lea Martin"
 affiliation: "Université Paris-Saclay"
-date: 2026-10-22
-startTime: "16:00"
-endTime: "17:30"
+startTime: "2026-10-22T16:00"
+duration: 90
 venue: "RM 814, Amado"
 status: demo
 speakerUrl: "https://example.com/"

@@ -2,9 +2,8 @@
 title: "Julia sets near parabolic parameters"
 speaker: "Jonas Weber"
 affiliation: "University of Bonn"
-date: 2026-05-14
-startTime: "14:00"
-endTime: "15:30"
+startTime: "2026-05-14T14:00"
+duration: 90
 venue: "RM 232, Amado"
 status: demo
 speakerUrl: "https://example.com/"

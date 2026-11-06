@@ -2,9 +2,8 @@
 title: "Porosity and dimension in random self-similar sets"
 speaker: "Maya Levin"
 affiliation: "Technion"
-date: 2026-10-08
-startTime: "14:30"
-endTime: "15:30"
+startTime: "2026-10-08T14:30"
+duration: 60
 venue: "RM 864, Amado"
 status: demo
 speakerUrl: "https://example.com/"

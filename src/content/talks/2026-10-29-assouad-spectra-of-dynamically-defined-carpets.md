@@ -2,9 +2,8 @@
 title: "Assouad spectra of dynamically defined carpets"
 speaker: "Sofia Almeida"
 affiliation: "University of Porto"
-date: 2026-10-29
-startTime: "12:30"
-endTime: "13:30"
+startTime: "2026-10-29T12:30"
+duration: 60
 venue: "RM 617, Meyer"
 status: demo
 speakerUrl: "https://example.com/"

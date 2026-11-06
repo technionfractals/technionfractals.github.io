@@ -2,9 +2,8 @@
 title: "Pressure metrics on deformation spaces"
 speaker: "Ethan Miller"
 affiliation: "University of Warwick"
-date: 2026-01-22
-startTime: "16:00"
-endTime: "17:00"
+startTime: "2026-01-22T16:00"
+duration: 60
 venue: "RM 864, Amado"
 status: demo
 speakerUrl: "https://example.com/"

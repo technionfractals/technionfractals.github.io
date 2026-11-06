@@ -2,9 +2,8 @@
 title: "Scenery distributions and scaling"
 speaker: "Karim Haddad"
 affiliation: "University of Geneva"
-date: 2025-08-14
-startTime: "15:00"
-endTime: "16:00"
+startTime: "2025-08-14T15:00"
+duration: 60
 venue: "RM 201, Taub"
 status: demo
 speakerUrl: "https://example.com/"

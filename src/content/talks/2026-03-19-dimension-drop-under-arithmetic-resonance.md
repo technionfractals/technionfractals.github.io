@@ -2,9 +2,8 @@
 title: "Dimension drop under arithmetic resonance"
 speaker: "Rina Sato"
 affiliation: "Kyoto University"
-date: 2026-03-19
-startTime: "14:30"
-endTime: "16:00"
+startTime: "2026-03-19T14:30"
+duration: 90
 venue: "RM 814, Amado"
 status: demo
 speakerUrl: "https://example.com/"

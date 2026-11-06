@@ -2,9 +2,8 @@
 title: "Harmonic measure on planar domains"
 speaker: "Nora Feldman"
 affiliation: "Weizmann Institute of Science"
-date: 2026-03-12
-startTime: "15:00"
-endTime: "16:00"
+startTime: "2026-03-12T15:00"
+duration: 60
 venue: "RM 617, Meyer"
 status: demo
 speakerUrl: "https://example.com/"

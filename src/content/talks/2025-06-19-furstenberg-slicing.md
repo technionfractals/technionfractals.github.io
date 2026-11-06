@@ -2,9 +2,8 @@
 title: "Furstenberg slicing phenomena"
 speaker: "David Azulay"
 affiliation: "Bar-Ilan University"
-date: 2025-06-19
-startTime: "16:00"
-endTime: "17:00"
+startTime: "2025-06-19T16:00"
+duration: 60
 venue: "RM 814, Amado"
 status: demo
 speakerUrl: "https://example.com/"

@@ -2,9 +2,8 @@
 title: "Bernoulli convolutions and algebraic parameters"
 speaker: "Amir Cohen"
 affiliation: "Tel Aviv University"
-date: 2026-02-05
-startTime: "14:30"
-endTime: "16:00"
+startTime: "2026-02-05T14:30"
+duration: 90
 venue: "RM 617, Meyer"
 status: demo
 speakerUrl: "https://example.com/"

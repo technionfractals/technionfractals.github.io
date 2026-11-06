@@ -2,9 +2,8 @@
 title: "Multifractal analysis of Birkhoff averages"
 speaker: "Yael Shavit"
 affiliation: "Ben-Gurion University"
-date: 2026-11-26
-startTime: "15:00"
-endTime: "16:00"
+startTime: "2026-11-26T15:00"
+duration: 60
 venue: "RM 814, Amado"
 status: demo
 speakerUrl: "https://example.com/"

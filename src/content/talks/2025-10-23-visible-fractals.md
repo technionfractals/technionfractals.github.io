@@ -2,9 +2,8 @@
 title: "Visible parts of planar fractals"
 speaker: "Uri Ben-David"
 affiliation: "Technion"
-date: 2025-10-23
-startTime: "14:00"
-endTime: "15:30"
+startTime: "2025-10-23T14:00"
+duration: 90
 venue: "RM 201, Taub"
 status: demo
 speakerUrl: "https://example.com/"

@@ -2,9 +2,8 @@
 title: "Distance sets of Ahlfors-regular fractals"
 speaker: "Omar Haddad"
 affiliation: "University of Haifa"
-date: 2026-04-30
-startTime: "14:30"
-endTime: "16:00"
+startTime: "2026-04-30T14:30"
+duration: 90
 venue: "RM 201, Taub"
 status: demo
 speakerUrl: "https://example.com/"

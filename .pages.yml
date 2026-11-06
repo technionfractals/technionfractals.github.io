@@ -12,17 +12,16 @@ content:
     format: yaml-frontmatter
     filename: "{year}-{month}-{day}-{title}.md"
     view:
-      fields: [title, speaker, date, status]
+      fields: [title, speaker, startTime, status]
       primary: title
-      sort: [date, title]
+      sort: [startTime, title]
       default:
-        sort: date
+        sort: startTime
         order: desc
     fields:
       - { name: title, label: Title, type: string, required: true }
       - { name: speaker, label: Speaker, type: string, required: true }
       - { name: affiliation, label: Affiliation, type: string }
-      - { name: date, label: Date, type: date, options: { time: false, format: "yyyy-MM-dd" }, required: true }
       - name: startTime
         label: Start time
         type: date
@@ -30,17 +29,15 @@ content:
         required: true
         options:
           time: true
-          format: "HH:mm"
+          format: "yyyy-MM-dd'T'HH:mm"
           step: 300
-      - name: endTime
-        label: End time
-        type: date
-        default: ""
+      - name: duration
+        label: Duration (minutes)
+        type: number
+        default: 60
         required: true
         options:
-          time: true
-          format: "HH:mm"
-          step: 300
+          min: 1
       - name: timezone
         label: Time zone
         type: string
@@ -65,7 +62,7 @@ content:
         list: true
         description: "Search keywords that are not displayed on the website"
       - name: resources
-        label: Additional information
+        label: Materials and additional information
         type: block
         list:
           collapsible:
@@ -74,10 +71,20 @@ content:
         blockKey: type
         blocks:
           - name: link
-            label: Link
+            label: External link
             fields:
-              - { name: label, label: Label, type: string, required: true }
+              - { name: label, label: Link text, type: string, required: true }
               - { name: url, label: URL, type: string, required: true }
+          - name: file
+            label: File attachment
+            fields:
+              - { name: label, label: Display label, type: string, required: true }
+              - name: url
+                label: File
+                type: file
+                required: true
+                options:
+                  media: materials
           - name: note
             label: Note
             fields:
