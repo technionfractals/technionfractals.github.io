@@ -247,7 +247,8 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
   margin: 0.3rem 0 0;
   color: var(--muted);
 }
-.speaker-line a { color: var(--blue); font-size: 1rem; font-weight: 700; }
+.speaker-line a,
+.speaker-line .speaker-name { color: var(--blue); font-size: 1rem; font-weight: 700; }
 .speaker-line .affiliation { margin-left: auto; font-weight: 400; text-align: right; }
 
 .talk-title-line {

@@ -12,7 +12,6 @@ const start = getTalkInstant(day, time, timezone);
 const displayStart = start ?? new Date(`${startTime}Z`);
 const end = new Date(displayStart.getTime() + duration * 60_000);
 const { Content } = await render(talk);
-const testUrl = "https://example.com/";
 const searchTags = talk.data.tags.join(" ");
 const titleHtml = await renderInlineMarkdown(talk.data.title);
 const additionalHtml = await Promise.all(talk.data.resources.map((item) =>
@@ -35,7 +34,9 @@ const additionalHtml = await Promise.all(talk.data.resources.map((item) =>
       {import.meta.env.DEV && talk.data.status === "draft" && <span class="status">Draft</span>}
     </div>
     <p class="speaker-line">
-      <a href={testUrl} target="_blank" rel="noopener noreferrer">{talk.data.speaker}</a>
+      {talk.data.speakerUrl ? (
+        <a href={talk.data.speakerUrl} target="_blank" rel="noopener noreferrer">{talk.data.speaker}</a>
+      ) : <span class="speaker-name">{talk.data.speaker}</span>}
       {talk.data.affiliation && <span class="affiliation">{talk.data.affiliation}</span>}
     </p>
     <details class="talk-abstract">
