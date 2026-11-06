@@ -2,8 +2,9 @@ import type { CollectionEntry } from "astro:content";
 
 export type Talk = CollectionEntry<"talks">;
 
-export const isPublicTalk = ({ data }: Talk) =>
-  data.status === "published" || data.status === "cancelled";
+export const isListedTalk = ({ data }: Talk) =>
+  data.status === "published"
+  || (import.meta.env.DEV && data.status === "draft");
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const datePartsFormatter = new Intl.DateTimeFormat("en-GB", {

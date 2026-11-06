@@ -32,6 +32,7 @@ const additionalHtml = await Promise.all(talk.data.resources.map((item) =>
     <div class="talk-title-line">
       <h3 set:html={titleHtml} />
       {talk.data.status === "cancelled" && <span class="status">Cancelled</span>}
+      {import.meta.env.DEV && talk.data.status === "draft" && <span class="status">Draft</span>}
     </div>
     <p class="speaker-line">
       <a href={testUrl} target="_blank" rel="noopener noreferrer">{talk.data.speaker}</a>

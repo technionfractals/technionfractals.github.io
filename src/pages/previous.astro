@@ -2,12 +2,12 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PaginatedTalkList from "../components/PaginatedTalkList.astro";
 import { getCollection } from "astro:content";
-import { compareTalksNewestFirst, isPublicTalk } from "../lib/talks";
+import { compareTalksNewestFirst, isListedTalk } from "../lib/talks";
 
 const today = new Intl.DateTimeFormat("en-CA", {
   year: "numeric", month: "2-digit", day: "2-digit", timeZone: "Asia/Jerusalem",
 }).format(new Date());
-const previous = (await getCollection("talks", (talk) => isPublicTalk(talk) && talk.data.startTime.slice(0, 10) < today))
+const previous = (await getCollection("talks", (talk) => isListedTalk(talk) && talk.data.startTime.slice(0, 10) < today))
   .sort(compareTalksNewestFirst);
 ---
 
