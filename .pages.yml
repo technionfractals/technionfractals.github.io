@@ -45,7 +45,7 @@ content:
         default: Asia/Jerusalem
         required: true
         description: "IANA time zone; the Haifa default is Asia/Jerusalem"
-      - { name: venue, label: Venue, type: string, required: true, description: "Compact format: RM 864, Amado" }
+      - { name: venue, label: Venue, type: string, required: true, default: "RM 614, Amado" }
       - { name: affiliation, label: Affiliation, type: string }
       - name: showTimezone
         label: Show time zone
