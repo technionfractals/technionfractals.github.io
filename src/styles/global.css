@@ -186,7 +186,7 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
 }
 
 .talk {
-  padding: clamp(1.2rem, 2.5vw, 1.75rem) 0;
+  padding: clamp(0.875rem, 1.65vw, 1.125rem) 0;
 }
 
 .talk + .talk { border-top: 1px solid var(--line); }
