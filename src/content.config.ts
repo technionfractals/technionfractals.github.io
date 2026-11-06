@@ -47,7 +47,7 @@ const talks = defineCollection({
     }, "Use an IANA time zone such as Asia/Jerusalem").default("Asia/Jerusalem"),
     showTimezone: z.boolean().default(false),
     venue: z.string(),
-    status: z.enum(["draft", "published", "cancelled"]).default("draft"),
+    status: z.enum(["draft", "published", "cancelled", "demo"]).default("draft"),
     speakerUrl: z.union([z.url(), z.literal("")]).optional(),
     tags: z.array(z.string().trim().min(1)).default([]),
     summary: z.string().optional(),

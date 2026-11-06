@@ -5,7 +5,7 @@ date: 2026-12-10
 startTime: 12:30
 endTime: 13:30
 venue: RM 232, Amado
-status: published
+status: demo
 speakerUrl: https://example.com/
 resources:
   - type: link

@@ -6,7 +6,7 @@ date: 2026-09-17
 startTime: "14:30"
 endTime: "15:30"
 venue: "RM 864, Amado"
-status: published
+status: demo
 speakerUrl: "https://example.com/"
 tags:
   - Hausdorff-dimension

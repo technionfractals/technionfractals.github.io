@@ -6,7 +6,7 @@ date: 2026-12-24
 startTime: 16:30
 endTime: 17:34
 venue: Taub 202
-status: published
+status: demo
 speakerUrl: https://example.com/
 resources:
   - type: link

@@ -6,7 +6,7 @@ date: 2026-05-28
 startTime: "16:00"
 endTime: "17:00"
 venue: "RM 814, Amado"
-status: published
+status: demo
 speakerUrl: "https://example.com/"
 tags:
   - ergodic-theory

@@ -6,7 +6,7 @@ date: 2026-09-02
 startTime: 08:32
 endTime: 18:30
 venue: Heaven
-status: published
+status: demo
 speakerUrl: https://example.com/
 resources:
   - type: text

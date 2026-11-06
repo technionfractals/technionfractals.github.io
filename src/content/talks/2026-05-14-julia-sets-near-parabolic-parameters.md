@@ -6,7 +6,7 @@ date: 2026-05-14
 startTime: "14:00"
 endTime: "15:30"
 venue: "RM 232, Amado"
-status: published
+status: demo
 speakerUrl: "https://example.com/"
 resources:
   - type: link

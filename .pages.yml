@@ -57,7 +57,7 @@ content:
         type: select
         default: draft
         options:
-          values: [draft, published, cancelled]
+          values: [draft, published, cancelled, demo]
       - { name: speakerUrl, label: Speaker webpage, type: string }
       - name: tags
         label: Tags

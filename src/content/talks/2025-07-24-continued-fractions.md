@@ -6,7 +6,7 @@ date: 2025-07-24
 startTime: "14:30"
 endTime: "15:30"
 venue: "RM 814, Amado"
-status: published
+status: demo
 speakerUrl: "https://example.com/"
 resources: []
 ---
