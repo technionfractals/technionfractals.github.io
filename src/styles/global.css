@@ -144,10 +144,6 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
   border-bottom: 1px solid var(--line);
 }
 
-[data-talk-items]:has(> .talk:not([hidden])) {
-  padding-block: clamp(0.875rem, 1.65vw, 1.125rem);
-}
-
 [data-talk-items] > .empty { border-top: 0; }
 
 .talk-search {
@@ -189,9 +185,11 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
   outline-offset: 2px;
 }
 
-.talk + .talk { border-top: 1px solid var(--line); }
+.talk {
+  padding: clamp(1.2rem, 2.5vw, 1.75rem) 0;
+}
 
-.talk:not([hidden]) ~ .talk:not([hidden]) { padding-block-start: 0.875rem; }
+.talk:not([hidden]) ~ .talk:not([hidden]) { border-top: 1px solid var(--line); }
 
 .pagination {
   display: flex;
