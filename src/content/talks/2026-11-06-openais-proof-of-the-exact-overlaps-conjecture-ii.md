@@ -9,4 +9,4 @@ showTimezone: false
 status: published
 speakerUrl: https://zfengg.github.io
 ---
-We explain the proof the inequality relating the pair capacities to the gap between Shannon and partition entropies.
+We explain the proof of the inequality relating the pair capacities to the gap between Shannon and partition entropies.
