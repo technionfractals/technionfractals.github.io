@@ -340,7 +340,6 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
 
 .talk-note { flex-basis: 100%; margin: 0; }
 
-.speaker-line a:hover,
 .prose a:hover,
 .contact-block a:hover,
 .talk-additional a:hover {
@@ -366,8 +365,8 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
 .plain-list { margin: 0; padding-left: 1.2rem; }
 .plain-list li + li { margin-top: 0.55rem; }
 
-.participant-list a { color: var(--blue-hover); }
-.participant-list a:hover { color: var(--blue); }
+.participant-list a:is(:hover, :focus-visible),
+.speaker-line a:is(:hover, :focus-visible) { text-decoration: underline; }
 .participant-email,
 .participant-email a {
   margin-left: 0.45rem;
