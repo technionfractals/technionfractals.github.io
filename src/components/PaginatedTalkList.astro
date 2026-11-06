@@ -15,14 +15,22 @@ const { talks, searchable = false, emptyMessage } = Astro.props;
   {searchable && (
     <div class="talk-search" role="search">
       <label class="sr-only" for="previous-talk-search">Search previous talks</label>
-      <input id="previous-talk-search" type="search" placeholder="Search" autocomplete="off" data-talk-search />
+      <div class="talk-search-field">
+        <svg class="talk-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5" />
+          <path d="m16 16 4 4" />
+        </svg>
+        <input id="previous-talk-search" type="search" placeholder="Search" autocomplete="off" data-talk-search />
+      </div>
     </div>
   )}
 
   <div data-talk-items>
     {talks.length > 0 ? talks.map((talk) => <TalkRow talk={talk} />) : <p class="empty">{emptyMessage}</p>}
   </div>
-  <p class="empty search-empty" data-search-empty hidden>No talks match your search.</p>
+  {searchable && talks.length > 0 && (
+    <p class="empty search-empty" data-search-empty hidden>No talks match your search.</p>
+  )}
 
   {talks.length > 10 && (
     <nav class="pagination" aria-label="Talk pages" data-pagination>
@@ -65,7 +73,7 @@ const { talks, searchable = false, emptyMessage } = Astro.props;
         const visible = new Set(matches.slice((currentPage - 1) * pageSize, currentPage * pageSize));
 
         entries.forEach((entry) => { entry.hidden = !visible.has(entry); });
-        if (searchEmpty) searchEmpty.hidden = matches.length !== 0;
+        if (searchEmpty) searchEmpty.hidden = !query || matches.length !== 0;
         if (!pagination || !pageNumbers || !firstButton || !previousButton || !nextButton || !lastButton) return;
 
         pagination.hidden = matches.length <= pageSize;

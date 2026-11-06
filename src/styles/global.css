@@ -152,9 +152,26 @@ main:has(.page-header) { padding-top: clamp(1.75rem, 4vw, 3rem); }
   margin: 0 0 1.25rem;
 }
 
-.talk-search input {
+.talk-search-field {
+  position: relative;
   width: min(100%, 32rem);
+}
+
+.talk-search-icon {
+  position: absolute;
+  inset-inline-start: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.talk-search input {
+  width: 100%;
   padding: 0.7rem 0.9rem;
+  padding-inline-start: 2.4rem;
   border: 1px solid var(--line);
   border-radius: 0.25rem;
   color: var(--ink);
