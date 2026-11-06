@@ -9,19 +9,20 @@ content:
     label: Talks
     type: collection
     path: src/content/talks
+    subfolders: false
     format: yaml-frontmatter
     filename: "{year}-{month}-{day}-{title}.md"
-    view:
+    view: &talk_view
       fields: [title, speaker, startTime, status]
       primary: title
       sort: [startTime, title]
       default:
         sort: startTime
         order: desc
-    fields:
+    fields: &talk_fields
       - { name: title, label: Title, type: string, required: true }
       - { name: speaker, label: Speaker, type: string, required: true }
-      - { name: affiliation, label: Affiliation, type: string }
+      - { name: body, label: Abstract, type: rich-text, required: true }
       - name: startTime
         label: Start time
         type: date
@@ -44,11 +45,12 @@ content:
         default: Asia/Jerusalem
         required: true
         description: "IANA time zone; the Haifa default is Asia/Jerusalem"
+      - { name: venue, label: Venue, type: string, required: true, description: "Compact format: RM 864, Amado" }
+      - { name: affiliation, label: Affiliation, type: string }
       - name: showTimezone
         label: Show time zone
         type: boolean
         default: false
-      - { name: venue, label: Venue, type: string, required: true, description: "Compact format: RM 864, Amado" }
       - name: status
         label: Status
         type: select
@@ -94,7 +96,16 @@ content:
             label: Text
             fields:
               - { name: text, label: Text, type: rich-text, required: true }
-      - { name: body, label: Abstract, type: rich-text, required: true }
+
+  - name: demo_talks
+    label: Demo talks
+    type: collection
+    path: src/content/talks/demo
+    subfolders: false
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{title}.md"
+    view: *talk_view
+    fields: *talk_fields
 
   - name: site
     label: Site settings
