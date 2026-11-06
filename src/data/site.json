@@ -9,47 +9,32 @@
     "formUrl": "https://tally.so/embed/eqXdvx?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
   },
   "about": {
-    "description": "We organize this series of seminars to discuss mathematics about fractal geometry and related topics.",
+    "description": "We organize this seminar series to discuss mathematics in fractal geometry and related areas.",
     "participants": [
       {
-        "name": "Amira Ben-David",
-        "url": "https://example.com/",
+        "name": "Amir Algom",
+        "url": "https://sites.google.com/view/amir-algom/home",
         "showEmail": false
       },
       {
-        "name": "Daniel Costa",
-        "showEmail": false
-      },
-      {
-        "name": "Elena Marković",
-        "showEmail": false
-      },
-      {
-        "name": "Lucas Chen",
-        "showEmail": false
-      },
-      {
-        "name": "Miriam Goldstein",
-        "showEmail": false
-      },
-      {
-        "name": "Nadia Rahman",
-        "url": "https://example.com/",
-        "showEmail": false
-      },
-      {
-        "name": "Tobias Keller",
-        "showEmail": false
-      },
-      {
-        "name": "Yael Stern",
+        "name": "Shengze Duan",
         "showEmail": false
       },
       {
         "name": "Zhou Feng",
-        "url": "https://zfengg.github.io/",
-        "email": "zfeng@example.com",
-        "showEmail": true
+        "url": "https://zfengg.github.io",
+        "email": "zfengjoe@outlook.com",
+        "showEmail": false
+      },
+      {
+        "name": "Ariel Rapaport",
+        "url": "https://sites.google.com/view/ariel-rapaport",
+        "showEmail": false
+      },
+      {
+        "name": "Yu-Liang Wu",
+        "url": "https://s92077.github.io",
+        "showEmail": false
       }
     ],
     "contacts": [
@@ -59,7 +44,7 @@
       },
       {
         "label": "Office",
-        "value": "Amado, Technion"
+        "value": "Amado 558, Technion"
       }
     ]
   }
